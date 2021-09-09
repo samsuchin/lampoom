@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/detect.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+        <div class="text-center row">
+            <div class="col-12">
+                <div>
+                <div style="position: relative;">
+                    <canvas width="640" height="480" id="overlay"></canvas>
+                    <video width="640" height="480" id="video"></video>
+                    
+            
+                </div>
+                <h1 id="result-text">Happiness: <span id="results">0</span>%</h1>
+            </div>
+            
+                </div>
+
+    </div>
+
+    
+      </div>
+
+{% endblock %}
+{% block js %}
+
+<!-- <script src="{% static 'js/detect.js' %}"></script> -->
+<script src="{% static 'js/face-api.js' %}"></script>
+<script>
+
+const video = document.getElementById("video");
+const canvas = document.getElementById("overlay");
+Promise.all([
+    faceapi.loadFaceExpressionModel("{% static 'models' %}"),
+    // faceapi.loadTinyFaceDetectorModel("{% static 'models' %}"),
+    faceapi.loadSsdMobilenetv1Model("{% static 'models' %}"),
+]).then(startVideo)
+
+function startVideo(){
+
+    if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+      video.play()
+      refreshState()
+    })
+    .catch(function (err) {
+      console.log("Something went wrong!", err);
+    });
+}
+
+}
+
+async function refreshState() {
+    setInterval(async() => {
+        try{
+            const detections = await faceapi.detectSingleFace(video).withFaceExpressions()
+            console.log(detections.expressions.happy)
+            if (detections){
+                let happiness = Math.trunc(detections.expressions.happy * 100)
+                document.getElementById("results").innerHTML = happiness
+                drawResults(detections)
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+        
+
+    }, 500)
+}
+
+function drawResults(detections){
+      faceapi.matchDimensions(canvas, video)
+      const resizedResults = faceapi.resizeResults(detections, video)
+      const minConfidence = 0.05
+      faceapi.draw.drawDetections(canvas, resizedResults)
+}
+
+</script>
+
+{% endblock %}

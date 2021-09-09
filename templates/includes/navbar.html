@@ -1,0 +1,65 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %}
+<div class="container py-4">
+    <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+      <div class="d-flex align-items-center col-md-3">
+        <a class="social-button mx-3" href=""><i class="fa fa-facebook social-icon"></i></a>
+        <a class="social-button mx-3" href=""><i class="fa fa-twitter social-icon"></i></a>
+        <a class="social-button mx-3" href=""><i class="fa fa-instagram social-icon"></i></a>
+      </div>
+
+      <a href="">
+          <img width="320" src="{% static 'images/logo.png' %}" alt="">
+      </a>
+
+      <div class="col-md-3 text-end">
+        <a href="#search-lightbox" class="lightbox epcl-search-button button circle mfp-inline">
+            <span class="fa-stack" style="font-size: 20px;">
+                <i class="fas fa-circle fa-stack-2x search-circle"></i>
+                <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+              </span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex align-items-center col-md-3 d-none d-md-block">
+            <a class="social-button mx-3" href=""><i class="fa fa-facebook social-icon"></i></a>
+            <a class="social-button mx-3" href=""><i class="fa fa-twitter social-icon"></i></a>
+            <a class="social-button mx-3" href=""><i class="fa fa-instagram social-icon"></i></a>
+          </div>
+          <div class="d-md-none">
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-none">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="" href="">
+        <img width="320" class="d-none d-md-block" src="{% static 'images/logo.png' %}" alt="">
+        <img width="180" class="d-md-none" src="{% static 'images/logo.png' %}" alt="">
+    </a>
+      <a href="#search-lightbox" class="lightbox epcl-search-button button circle mfp-inline col-md-3 text-end">
+        <span class="fa-stack" style="font-size: 20px;">
+            <i class="fas fa-circle fa-stack-2x search-circle"></i>
+            <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+          </span>
+    </a>
+    </div>
+    
+  </nav>
