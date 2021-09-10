@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'core',
-    'read'
+    'read',
+    'tinymce',
+    'widget_tweaks'
 
 ]
 

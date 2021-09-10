@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto mb-3 mt-5"><h1 class="">Read</h1></div>
+                {% for work in works %}
+                <div class="col-12 col-md-8 d-flex border-bottom py-2 work mx-auto">
+                <a href="{% url 'work_detail' work.pk %}" class="work-link">{{work.title}}</a>
+                <div class="ms-auto">by {{work.writer.display_name}}</div>
+                </div>
+                {% endfor %}
+                
+              </div>
+              <div>{% include 'includes/pagination.html' with page_obj=works %}</div>
+        </div>
+
+{% endblock %}

@@ -9,3 +9,24 @@
 .search-circle{
     color: #67278e;
 }
+
+.top-banner{
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Nunito', sans-serif;
+}
+.top-banner > a{
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: all 300ms ease;
+}
+.top-banner > a:hover{
+    font-weight: bold;
+    text-decoration: none;
+    color: #b374da;
+}

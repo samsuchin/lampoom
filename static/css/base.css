@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito&display=swap');
+
+.page-item > .page-link{
+    background-color: transparent;
+    color: #67278e;
+}
+
+.page-link:hover{
+    background-color: #18191A;
+    color: white;
+    border-color: #18191A;
+}
+
+
+.page-item.active > .page-link{
+    background-color: #67278e;
+    color: white;
+    border-color:   #67278e;
+}
+.page-first{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: #67278e;
+}
+.page-last{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #67278e;
+}
+
+.dot{
+    height: 5px !important;
+    width: 5px !important;
+    background-color: #67278e;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* 
+
+#67278e
+
+*/
