@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/read.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-
+  <h1 class="text-center py-3">Read</h1>
     <div class="row">
+      {% for work in works %}
+      <div class="col-6 col-lg-4">
+        {% include 'includes/work_card.html' %}
+      </div>
+      {% endfor %}
         <div class="col-12 col-md-8 mx-auto mb-3 mt-5"><h1 class="">Read</h1></div>
                 {% for work in works %}
                 <div class="col-12 col-md-8 d-flex border-bottom py-2 work mx-auto">

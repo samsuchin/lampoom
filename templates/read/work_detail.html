@@ -2,18 +2,23 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/detect.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container my-5">
     <div class="row">
 
         <div class="col-12 col-md-8 mx-auto">
-            <button onclick="playAudio">PLAY</button>
             <img src="{{work.art_work.image.url}}" width="100%" alt="" class="shadow">
             <div class="text-center">
-                <h3 class="my-3">{{work.title}}</h3>
+                <h3 class="my-3">{{work.title}}{% if work.voice_file %}
+                    <button class="play-sound" onclick="playAudio('{{work.voice_file.url}}')"><i class="fa fa-volume-up"></i></button>
+                    {% endif %}</h3>
                 <div class="work fw-bold d-flex align-items-center justify-content-center"><a class="work-link" href="">
-                    <img class="shadow mx-2" style="border-radius: 50%;" width="40" height="40" src="{% static 'images/lampy.png' %}" alt="">{{work.writer.display_name}}</a><span class="dot mx-2 align-self-center"></span><div>{{work.created_at|date:"F Y" }}</div>
+                        <img class="shadow mx-2" style="border-radius: 50%;" width="40" height="40"
+                            src="{% static 'images/lampy.png' %}" alt="">{{work.writer.display_name}}</a><span
+                        class="dot mx-2 align-self-center"></span>
+                    <div>{{work.created_at|date:"F Y" }}</div>
                 </div>
             </div>
             <div class="mt-4">{{work.content | safe}}</div>
@@ -22,13 +27,26 @@
     </div>
 
 </div>
+
+<button id="video-start" onclick="startLaughAnalysis()" class="laugh-track shadow"><i id="video-icon" class="fa fa-video" style="color: white;"></i></button>
+<button id="video-stop" style="display: none;" onclick="stopVideo()" class="laugh-track shadow"><i id="video-icon" class="fa fa-times" style="color: white;"></i></button>
+<div style="display: none;" class="" id="video-view">
+    <div style="position: relative;">
+        <canvas width="320" height="240" id="overlay"></canvas>
+        <video width="320" height="240" id="video"></video>
+    </div>
+</div>
 {% endblock %}
 {% block js %}
 <script>
-    var audio = new Audio("{{work.voice_file.url}}")
-    console.log(audio)
-    function playAudio(){
+
+    function playAudio(audio_file) {
+        var audio = new Audio(audio_file)
         audio.play()
     }
+    
+
 </script>
+<script src="{% static 'js/face-api.js' %}"></script>
+<script src="{% static 'js/detect.js' %}"></script>
 {% endblock %}
