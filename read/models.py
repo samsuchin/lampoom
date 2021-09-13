@@ -11,9 +11,15 @@ class Work(models.Model):
     voice_file = models.FileField(upload_to="voices/", null=True, blank=True)
     active = models.BooleanField(default=True)
     classic = models.BooleanField(default=False)
+    custom_display_name = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
+
+    def get_display_name(self):
+        if self.custom_display_name:
+            return self.custom_display_name
+        return self.writer.display_name
 
 class ArtWork(models.Model):
     artist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)

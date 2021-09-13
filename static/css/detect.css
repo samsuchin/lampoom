@@ -4,8 +4,10 @@
 }
 #overlay{
     position: absolute;
+    z-index: 1001;
 }
 #video-view{
+    z-index: 1000;
     position: fixed;
     top: 20px;
     left: 50%;

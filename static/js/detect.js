@@ -22,6 +22,7 @@ function stopVideo(){
     
     video.srcObject = null;
     canvas.style.display = "none"
+    video.style.display = "none"
     document.getElementById("video-stop").style.display = "none";
     document.getElementById("video-start").style.display = "block";
 }
@@ -35,6 +36,7 @@ function startVideo(){
       video.play()
       video_view.style.display = "block"
       canvas.style.display = "block"
+      video.style.display = "block"
         document.getElementById("video-stop").style.display = "block";
         document.getElementById("video-start").style.display = "none";
       refreshState()

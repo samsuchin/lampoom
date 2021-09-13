@@ -3,41 +3,38 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
 <div class="top-banner"><i class="fa fa-bell mx-2"></i>   Subscribe to the <a class="" href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Harvard Lampoon</a></div>
-  <nav class="navbar navbar-expand-md navbar-light mt-4">
-    <div class="container">
-        <div class="d-flex align-items-center col-md-3 d-none d-md-block">
-            <a class="social-button mx-3" href=""><i class="fa fa-facebook social-icon"></i></a>
-            <a class="social-button mx-3" href=""><i class="fa fa-twitter social-icon"></i></a>
-            <a class="social-button mx-3" href=""><i class="fa fa-instagram social-icon"></i></a>
-          </div>
-          <div class="d-md-none">
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-none">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-            </ul>
-          </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3 d-flex align-items-center justify-content-start">
+            <a class="social-button me-3 d-md-block d-none" href="https://www.facebook.com/theharvardlampoon/"><i class="fa fa-facebook social-icon"></i></a>
+            <a class="social-button mx-3 d-md-block d-none" href="https://twitter.com/harvardlampoon"><i class="fa fa-twitter social-icon"></i></a>
+            <a class="social-button mx-3 d-md-block d-none" href="https://www.instagram.com/harvardlampoon/"><i class="fa fa-instagram social-icon"></i></a>
+            <a data-bs-toggle="offcanvas" class="d-md-none" href="#sideNav" role="button" aria-controls="sideNav"><img width="30" id="side-nav-image" src="{% static 'images/menu-icon.svg' %}" alt=""></a>
         </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="" href="{% url 'index' %}">
-        <img width="320" class="d-none d-md-block" src="{% static 'images/real_logo.png' %}" alt="">
-        <img width="180" class="d-md-none" src="{% static 'images/real_logo.png' %}" alt="">
-    </a>
-      <a href="#search-lightbox" class="lightbox epcl-search-button button circle mfp-inline col-md-3 text-end">
-        <span class="fa-stack" style="font-size: 20px;">
-            <i class="fas fa-circle fa-stack-2x search-circle"></i>
-            <i class="fa fa-search fa-stack-1x fa-inverse"></i>
-          </span>
-    </a>
+        <div class="mx-auto col-6 text-center">
+            <a class="" href="{% url 'index' %}">
+                <img width="320" class="d-none d-md-inline" src="{% static 'images/real_logo.png' %}" alt="">
+                <img width="180" class="d-md-none" src="{% static 'images/real_logo.png' %}" alt="">
+            </a>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-end">
+            <a href="#search-lightbox" class="" id="">
+                <img id="search" class="shadow" width="40px" src="{% static 'images/search.svg' %}" alt="">
+            </a>
+        </div>
     </div>
-    
-  </nav>
+</div>
+
+<div class="d-flex justify-content-center my-3 d-none d-md-flex">
+    <a class="nav-link" href="{% url 'index' %}">Home</a>
+    <a class="nav-link" href="{% url 'works' %}">About</a>
+    <a class="nav-link" href="{% url 'works' %}">Read</a>
+    <a class="nav-link" href="{% url 'works' %}">Comp</a>
+    <a class="nav-link" href="{% url 'works' %}">Masthead</a>
+    <a class="nav-link" href="{% url 'works' %}">Contact</a>
+    <a class="nav-link" href="https://opensea.io/collection/samburgers">NFTs</a>
+    <a class="nav-link" href="">Lottery</a>
+</div>
+
+  {% include 'includes/search_modal.html' %}
+  {% include 'includes/sideNav.html' %}

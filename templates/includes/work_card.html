@@ -6,12 +6,12 @@
         <h5 class="card-title text-center">{{work.title}}</h5>
         <div class="work fw-bold d-flex align-items-center justify-content-center"><a class="work-link" href="">
           <img class="shadow mx-2" style="border-radius: 50%;" width="30" height="30"
-              src="{% static 'images/lampy.png' %}" alt="">{{work.writer.display_name}}</a><span
+              src="{% static 'images/lampy.png' %}" alt="">{{work.get_display_name}}</a><span
           class="dot mx-2 align-self-center"></span>
       <div>{{work.created_at|date:"F Y" }}</div>
   </div>
   {% spaceless %}
-        <p class="card-text">{{work.content|slice:75|safe}}</p>
+        <p class="card-text">{{work.content|slice:75|safe}}...</p>
         {% endspaceless %}
       </div>
     </div>

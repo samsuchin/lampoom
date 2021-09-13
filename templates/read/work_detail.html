@@ -16,7 +16,7 @@
                     {% endif %}</h3>
                 <div class="work fw-bold d-flex align-items-center justify-content-center"><a class="work-link" href="">
                         <img class="shadow mx-2" style="border-radius: 50%;" width="40" height="40"
-                            src="{% static 'images/lampy.png' %}" alt="">{{work.writer.display_name}}</a><span
+                            src="{% static 'images/lampy.png' %}" alt="">{{work.get_display_name}}</a><span
                         class="dot mx-2 align-self-center"></span>
                     <div>{{work.created_at|date:"F Y" }}</div>
                 </div>

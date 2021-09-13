@@ -30,3 +30,28 @@
     text-decoration: none;
     color: #b374da;
 }
+
+.nav-link{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+line-height: 1.25;
+position: relative;
+z-index: 1;
+color: #242323;
+letter-spacing: 0.3px;
+}
+.nav-link:hover{
+    color: #b374da;
+}
+
+#search{
+    background-color: transparent !important;
+    background: transparent;
+    color: transparent;
+    border-radius: 50%;
+    
+}
+
+#side-nav-image{
+    outline-color: none;
+}
