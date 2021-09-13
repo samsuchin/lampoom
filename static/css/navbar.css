@@ -43,7 +43,9 @@ letter-spacing: 0.3px;
 .nav-link:hover{
     color: #b374da;
 }
-
+.active{
+    color: #67278e !important;
+}
 #search{
     background-color: transparent !important;
     background: transparent;

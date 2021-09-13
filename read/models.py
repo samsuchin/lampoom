@@ -12,6 +12,7 @@ class Work(models.Model):
     active = models.BooleanField(default=True)
     classic = models.BooleanField(default=False)
     custom_display_name = models.CharField(max_length=200, null=True, blank=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title
@@ -34,6 +35,7 @@ class Magazine(models.Model):
     works = models.ManyToManyField(Work, related_name="magazines")
     description = models.TextField(max_length=1000, null=True, blank=True)
     special_link = models.URLField(null=True, blank=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title
