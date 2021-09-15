@@ -4,6 +4,8 @@ const canvas = document.getElementById("overlay");
 const expressionEl = document.getElementById("expressions");
 const video_view = document.getElementById("video-view");
 const video_icon = document.getElementById("video-icon")
+const endpoint = document.getElementById("laugh-endpoint").value;
+const work_pk = document.getElementById("work-pk").value;
 
 async function startLaughAnalysis(){
     Promise.all([
@@ -58,6 +60,22 @@ async function refreshState() {
                 if(happiness > 98){
                     confetti()
                     console.log("CONFETTI")
+                    fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            "X-CSRFToken": getCookie('csrftoken'),
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            work_pk: work_pk
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("laugh-score").innerHTML = data.score + " Laughs"
+                        console.log(data)
+                    })
+
                 }
             }
         }

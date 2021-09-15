@@ -1,6 +1,8 @@
+from django.http.response import JsonResponse
 from read.models import Work
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
+import json
 
 def detect(request):
     return render(request, "read/smile_detect.html")
@@ -21,3 +23,12 @@ def work_detail(request, work_pk):
         "work": work
     }
     return render(request, "read/work_detail.html", context)
+
+def add_laugh_score(request):
+    if request.method=="POST":
+        data = json.loads(request.body)
+        work_pk = data.get("work_pk")
+        work = Work.objects.get(pk=work_pk)
+        work.laugh_score+=1
+        work.save()
+        return JsonResponse({"score": work.laugh_score})

@@ -9,12 +9,12 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('display_name','first_name','last_name', 'email', 'is_active',)
     list_filter = ('email', 'is_staff', 'is_active',)
     fieldsets = (
-        ('Information', {'fields': ('display_name', 'email', 'password', 'date_joined')}),
+        ('Information', {'fields': ('display_name', 'email', 'password', 'date_joined', 'bio')}),
         ('Permissions', {'fields': ('is_active', 'is_staff')}),
-        ('Misc', {'fields': ('first_name', 'last_name','graduation_year', 'board')}),
+        ('Misc', {'fields': ('first_name', 'last_name','graduation_year', 'board', 'profile_picture', 'profile_picture_preview')}),
         
     )
-    readonly_fields = ['date_joined',]
+    readonly_fields = ['date_joined', 'profile_picture_preview']
     add_fieldsets = (
         (None, {
             'classes': ('wide',),

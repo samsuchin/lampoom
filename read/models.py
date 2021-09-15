@@ -4,7 +4,7 @@ from tinymce.models import HTMLField
 
 class Work(models.Model):
     title = models.CharField(max_length=200)
-    art_work = models.ForeignKey("ArtWork", null=True, blank=True, on_delete=models.SET_NULL)
+    art_works = models.ManyToManyField("ArtWork", related_name="works")
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     content = HTMLField()
     created_at = models.DateTimeField()
@@ -13,6 +13,8 @@ class Work(models.Model):
     classic = models.BooleanField(default=False)
     custom_display_name = models.CharField(max_length=200, null=True, blank=True)
     featured = models.BooleanField(default=False)
+    laugh_score = models.PositiveBigIntegerField(default=0)
+    original_work = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.title
@@ -21,14 +23,26 @@ class Work(models.Model):
         if self.custom_display_name:
             return self.custom_display_name
         return self.writer.display_name
+    
+    def get_preview_image(self):
+        return self.art_works.all().order_by("order").first()
 
 class ArtWork(models.Model):
     artist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to="artwork/")
     title = models.CharField(max_length=100)
+    order = models.IntegerField(default=1)
+    custom_display_name = models.CharField(max_length=200, null=True, blank=True)
+    original_work = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.title
+
+    def get_display_name(self):
+        if self.custom_display_name:
+            return self.custom_display_name
+        return self.artist.display_name
+        
 
 class Magazine(models.Model):
     title = models.CharField(max_length=255)

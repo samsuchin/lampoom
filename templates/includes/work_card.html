@@ -1,13 +1,16 @@
 {% load static %}
 <a class="card-link" href="{% url 'work_detail' work.pk %}">
     <div class="card shadow" style="border: none">
-      <img src="{{work.art_work.image.url}}" class="card-img-top" alt="...">
+
+      <img src="{{work.get_preview_image.image.url}}" class="card-img-top" alt="...">
+      
       <div class="card-body">
-        <h5 class="card-title text-center">{{work.title}}</h5>
-        <div class="work fw-bold d-flex align-items-center justify-content-center"><a class="work-link" href="">
-          <img class="shadow mx-2" style="border-radius: 50%;" width="30" height="30"
-              src="{% static 'images/lampy.png' %}" alt="">{{work.get_display_name}}</a><span
-          class="dot mx-2 align-self-center"></span>
+        <h5 class="card-title text-center">{{work.title}} <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{work.laugh_score}} Laughs" class="badge bg-purple">{{work.laugh_score}}</span></h5>
+        <div class="work fw-bold d-flex align-items-center justify-content-center">
+          
+          {% include 'includes/writer_profile_pic.html' %}
+
+    <span class="dot mx-2 align-self-center"></span>
       <div>{{work.created_at|date:"F Y" }}</div>
   </div>
   {% spaceless %}

@@ -1,0 +1,10 @@
+{% load static %}
+{% if art.custom_display_name %}
+<span class="work">
+    <img class="me-2 shadow" style="border-radius: 50%;" width="30" height="30" src="{% static 'images/lampy.png' %}"
+        alt="">{{art.get_display_name}}</span>
+{% else %}
+<a class="work-link" href="{% url 'account_detail' art.artist.url_username %}">
+    <img class="me-2 shadow" style="border-radius: 50%;" width="30" height="30"
+        src="{% if art.artist.profile_picture %}{{art.artist.profile_picture.url}}{% else %}{% static 'images/lampy.png' %}{% endif %}" alt="">{{art.get_display_name}}</a>
+{% endif %}

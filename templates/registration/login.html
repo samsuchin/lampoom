@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div id="page-backing" class="">
+
+  <div class="container py-5">
+  <div class="card py-5">
+
+    <div class="card-body">
+      <h2 class="card-title text-center fw-bold">Login</h2>
+      <form class="needs-validation" method="post">{% csrf_token %}
+        {% include 'includes/form.html' %}
+        <div class="text-center">
+          <button class="btn btn-primary mt-3 w-50" type="submit">Login</button>
+        </div>
+
+    </form>
+    </div>
+    <div class="card-footer">
+        
+      <div class="list-group text-center">
+        <span class="help-text pb-2">Forgot your password? <a href="{% url 'password_reset' %}">Reset Password</a></span>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+        </div>
+{% endblock %}

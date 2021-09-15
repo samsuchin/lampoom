@@ -1,0 +1,8 @@
+Hello,
+
+Please follow this link to activate your account.
+
+{{link}}
+
+Thank you,
+Music2You

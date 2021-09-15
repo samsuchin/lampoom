@@ -9,15 +9,36 @@
     <div class="row">
 
         <div class="col-12 col-md-8 mx-auto">
-            <img src="{{work.art_work.image.url}}" width="100%" alt="" class="shadow">
+            <div id="artWorks" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for art in work.art_works.all %}
+                    <div class="carousel-item {% if forloop.first %}active{%endif%}">
+                        <img src="{{art.image.url}}" class="d-block w-100" alt="...">
+                        <div class="text-center work fw-bold d-block mt-2 mb-4">
+                            Art by {% include 'includes/artist_profile_pic.html' %}
+                        </div>
+                      </div>
+                      
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#artWorks" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#artWorks" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                
+              </div>
             <div class="text-center">
-                <h3 class="my-3">{{work.title}}{% if work.voice_file %}
+                <h3 class="">{{work.title}}{% if work.voice_file %}
                     <button class="play-sound" onclick="playAudio('{{work.voice_file.url}}')"><i class="fa fa-volume-up"></i></button>
                     {% endif %}</h3>
-                <div class="work fw-bold d-flex align-items-center justify-content-center"><a class="work-link" href="">
-                        <img class="shadow mx-2" style="border-radius: 50%;" width="40" height="40"
-                            src="{% static 'images/lampy.png' %}" alt="">{{work.get_display_name}}</a><span
-                        class="dot mx-2 align-self-center"></span>
+                    <h5 class="text-center"><span id="laugh-score" class="badge bg-purple">{{work.laugh_score}} Laughs</span></h5>
+                <div class="work fw-bold d-flex align-items-center justify-content-center">
+                    By {% include 'includes/writer_profile_pic.html' %}
+                            <span class="dot mx-2 align-self-center"></span>
                     <div>{{work.created_at|date:"F Y" }}</div>
                 </div>
             </div>
@@ -27,7 +48,8 @@
     </div>
 
 </div>
-
+<input type="hidden" name="endpoint" value="{% url 'add_laugh_score' %}" id="laugh-endpoint">
+<input type="hidden" name="work_pk" value="{{work.pk}}" id="work-pk">
 <button id="video-start" onclick="startLaughAnalysis()" class="laugh-track shadow"><i id="video-icon" class="fa fa-video" style="color: white;"></i></button>
 <button id="video-stop" style="display: none;" onclick="stopVideo()" class="laugh-track shadow"><i id="video-icon" class="fa fa-times" style="color: white;"></i></button>
 <div style="display: none;" class="" id="video-view">
