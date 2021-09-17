@@ -47,6 +47,9 @@
 .card {
     border-radius: 0;
 }
+.purple{
+    color: #67278e;
+}
 
 .btn-primary {
     background-color: #67278e;
@@ -70,6 +73,11 @@
     background-color: #b374da;
     border-color: #b374da;
     }
+
+hr{
+    opacity: 1;
+    color: black;
+}
 /* 
 
 #67278e

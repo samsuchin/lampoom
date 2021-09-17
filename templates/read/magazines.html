@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+  <h1 class="text-center py-3">Magazines</h1>
+  <!-- <input type="text" class="form-control"> -->
+    <div class="row g-4">
+      {% for work in works %}
+      <div class="col-6 col-lg-4">
+        {% include 'includes/work_card.html' %}
+      </div>
+      {% endfor %}
+
+  {% include 'includes/pagination.html' with page_obj=works %}
+        </div>
+</div>
+{% endblock %}

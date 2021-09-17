@@ -5,6 +5,7 @@ h1{
 .work{
     color: #596172;
     font-family: 'Nunito', sans-serif;
+    text-decoration: none;
 }
 .work-link{
     color: #596172;
@@ -12,7 +13,7 @@ h1{
     transition: all 300ms ease;
 }
 .work-link:hover{
-    color: #b374da;
+    color: #b374da !important;
 }
 .play-sound{
     background: transparent;
@@ -52,3 +53,16 @@ h1{
     background-color:#b374da;
 }
 
+.magazine-index-image{
+    object-fit: cover;
+    width: 100%;
+    height: 600px;
+}
+.card-title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+.card-text{
+    font-family: 'Nunito', sans-serif;
+    color: #596172;
+}

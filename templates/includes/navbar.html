@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
 <div class="top-banner"><i class="fa fa-bell mx-2"></i>   Subscribe to the <a class="" href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Harvard Lampoon</a></div>
-<div class="container mt-5">
+<div class="container my-5">
     <div class="row">
         <div class="col-3 d-flex align-items-center justify-content-start">
             <a class="social-button me-3 d-md-block d-none" href="https://www.facebook.com/theharvardlampoon/"><i class="fa fa-facebook social-icon"></i></a>
@@ -28,13 +28,21 @@
 <div class="d-flex justify-content-center my-3 d-none d-md-flex">
     <a class="nav-link {%if request.path == '/' %}active{%endif%}" href="{% url 'index' %}">Home</a>
     <a class="nav-link" href="{% url 'works' %}">About</a>
-    <a class="nav-link {%if 'read' in request.path %}active{%endif%}" href="{% url 'works' %}">Read</a>
+    <a class="nav-link dropdown-toggle {%if 'read' in request.path %}active{%endif%}" href="{% url 'works' %}" id="readDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Read
+    </a>
+    <ul class="dropdown-menu shadow" aria-labelledby="readDrop">
+        <li><a class="dropdown-item" href="{% url 'works' %}">Works</a></li>
+        <li><a class="dropdown-item" href="#">Magazines</a></li>
+        <li><a class="dropdown-item" href="#">Books</a></li>
+    </ul>
     <a class="nav-link" href="{% url 'works' %}">Comp</a>
     <a class="nav-link" href="{% url 'works' %}">Masthead</a>
     <a class="nav-link" href="{% url 'works' %}">Contact</a>
     <a class="nav-link" href="https://opensea.io/collection/samburgers">NFTs</a>
     <a class="nav-link" href="">Lottery</a>
     {% if request.user.is_authenticated %}
+    <a class="nav-link" href="{% url 'account_detail' request.user.url_username %}">My Profile</a>
     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
     {% else %}
     <a class="nav-link" href="{% url 'login' %}">Login</a>

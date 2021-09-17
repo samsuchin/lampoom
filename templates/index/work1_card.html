@@ -1,0 +1,17 @@
+{% load static %}
+<a class="card-link" href="{% url 'work_detail' work.pk %}">
+    <div class="card shadow mb-3" style="border: none">
+
+      <img src="{{work.get_preview_image.image.url}}" class="card-img-top" alt="...">
+      
+      <div class="card-body">
+        <h5 class="card-title text-center">{{work.title}} <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{work.laugh_score}} Laughs" class="badge bg-purple">{{work.laugh_score}}</span></h5>
+        <div class="work fw-bold d-flex align-items-center justify-content-center">
+          <span class="work fw-bold">By</span>{% include 'includes/writer_profile_pic.html' %}
+        </div>
+
+  <div class="card-text mt-3">{{work.content|truncatechars_html:75|safe}}</div>
+
+      </div>
+    </div>
+  </a>

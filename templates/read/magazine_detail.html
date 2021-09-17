@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/detect.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-8 col-lg-4">
+            
+            <img src="{{magazine.cover_image.image.url}}" class="img-fluid" alt="">
+        </div>
+        <div class="col-12 col-lg-4">
+            <h1 class="text-center mt-2 mt-lg-0">{{magazine.title}}</h1>
+            <hr>
+            {% if magazine.issue_editor %}
+            <div><span class="fw-bold">Issue Editor: </span>{{magazine.issue_editor}}</div>
+            {% endif %}
+            {% if magazine.art_editor %}
+            <div><span class="fw-bold">Art Editor: </span>{{magazine.art_editor}}</div>
+            {% endif %}
+            <div><span class="fw-bold">Date: </span>{{magazine.created_at|date:"F Y"}}</div>
+            <hr>
+            <div>{{magazine.description|safe}}</div>
+        </div>
+</div>
+<hr>
+<div class="row g-4">
+    <h1 class="text-center mb-3">Works</h1>
+    {% for work in magazine.works.all %}
+    <div class="col-6 col-lg-4">
+        {% include 'includes/work_card.html' %}
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

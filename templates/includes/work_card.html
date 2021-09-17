@@ -13,9 +13,8 @@
     <span class="dot mx-2 align-self-center"></span>
       <div>{{work.created_at|date:"F Y" }}</div>
   </div>
-  {% spaceless %}
-        <p class="card-text">{{work.content|slice:75|safe}}...</p>
-        {% endspaceless %}
+
+  <div class="card-text mt-3">{{work.content|truncatechars_html:75|safe}}</div>
       </div>
     </div>
   </a>

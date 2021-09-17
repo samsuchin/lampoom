@@ -47,12 +47,23 @@ class ArtWork(models.Model):
 class Magazine(models.Model):
     title = models.CharField(max_length=255)
     works = models.ManyToManyField(Work, related_name="magazines")
-    description = models.TextField(max_length=1000, null=True, blank=True)
+    description = HTMLField(null=True, blank=True)
     special_link = models.URLField(null=True, blank=True)
     featured = models.BooleanField(default=False)
+    cover_image = models.ForeignKey(ArtWork, null=True, blank=True, on_delete=models.SET_NULL)
+
+    issue_editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="issue_editor")
+    art_editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="art_editor")
+    created_at = models.DateTimeField()
 
     def __str__(self) -> str:
         return self.title
+
+    def get_total_laughs(self):
+        total = 0
+        for work in self.works.all():
+            total+=work.laugh_score
+        return total
 
 class Book(models.Model):
     title = models.CharField(max_length=200)

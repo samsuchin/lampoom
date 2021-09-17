@@ -13,6 +13,12 @@
             <a class="nav-link mb-2" href="{% url 'works' %}">Contact</a>
             <a class="nav-link mb-2" href="https://opensea.io/collection/samburgers">NFTs</a>
             <a class="nav-link mb-2" href="">Lottery</a>
+            {% if request.user.is_authenticated %}
+            <a class="nav-link mb-2" href="{% url 'account_detail' request.user.url_username %}">My Profile</a>
+            <a class="nav-link mb-2" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link mb-2" href="{% url 'login' %}">Login</a>
+            {% endif %}
             <div class="mx-auto">
                 <a class="social-button me-3" href="https://www.facebook.com/theharvardlampoon/"><i class="fa fa-facebook social-icon"></i></a>
                 <a class="social-button mx-3" href="https://twitter.com/harvardlampoon"><i class="fa fa-twitter social-icon"></i></a>

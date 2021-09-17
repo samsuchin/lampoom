@@ -1,11 +1,15 @@
-from read.models import ArtWork
+from read.models import ArtWork, Magazine, Work
 from django.shortcuts import render
 
 # Create your views here.
 
 def index(request):
-    images = ArtWork.objects.all().order_by("?")[:5]
+    works = Work.objects.filter(featured=False).order_by("?").distinct()[:6]
+    featured_works = Work.objects.filter(featured=True).order_by("?").distinct()[:2]
+    magazine = Magazine.objects.filter(featured=True).first()
     context = {
-        "images": images
+        "featured_works": featured_works,
+        "works": works,
+        "magazine": magazine
     }
     return render(request, "index.html", context)
