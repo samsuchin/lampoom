@@ -17,18 +17,7 @@
                 {% endfor %}
             </div>
             <div class="col-lg-5 text-center order-0 order-lg-1">
-                <a class="card-link" href="{% url 'magazine_detail' magazine.pk %}">
-                <div class="shadow mb-4">
-                <img src="{{magazine.cover_image.image.url}}" class="magazine-index-image" alt="">
-
-                <div class="d-flex align-items-center justify-content-center mb-1 mt-2">
-                    <h2 class="card-title text-center mb-0">{{magazine.title}}</h2>
-                    <h5 class="mb-1"><div data-bs-toggle="tooltip" data-bs-placement="top" title="{{magazine.get_total_laughs}} Total Laughs" class="badge bg-purple ms-2">{{magazine.get_total_laughs}}</div></h5>
-                </div>
-                
-                <div class="card-text mb-4 pb-3">{{magazine.description|truncatechars_html:200|safe}}</div>
-                </div>
-            </a>
+                {% include 'index/magazine.html' %}
             </div>
             <div class="col order-2 order-lg-2">
                 {% for work in works %}
@@ -42,7 +31,9 @@
             </div>
   
         </div>
-
+        <div class="text-center mb-4">
+            <img class="mx-auto img-fluid" src="{% static 'images/american_eagle.jpg' %}" alt="">
+        </div>
     </div>
 
 

@@ -1,8 +1,9 @@
+{% load static %}
 <a class="card-link" href="{% url 'magazine_detail' magazine.pk %}">
     <div class="card shadow mb-4">
-    <img src="{{magazine.cover_image.image.url}}" class="magazine-index-image" alt="">
+    <img src="{{magazine.cover_image.image.url}}" class="img-fluid" alt="">
 
-    <div class="card-body">
+    <div class="card-body text-center">
     <div class="mb-1 mt-2">
         <h2 class="card-title text-center mb-0">{{magazine.title}}</h2>
         <h5 class="mb-1"><div data-bs-toggle="tooltip" data-bs-placement="top" title="{{magazine.get_total_laughs}} Total Laughs" class="badge bg-purple ms-2">{{magazine.get_total_laughs}}</div></h5>

@@ -80,3 +80,6 @@ transition: all 300ms ease;
     color: #b374da;
     background-color: white;
     }
+.fadeIn{
+    transition: all 300ms ease;
+}

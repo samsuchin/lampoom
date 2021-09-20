@@ -1,4 +1,5 @@
 from read.models import ArtWork, Magazine, Work
+from ads.models import Ad
 from django.shortcuts import render
 
 # Create your views here.
@@ -13,3 +14,4 @@ def index(request):
         "magazine": magazine
     }
     return render(request, "index.html", context)
+

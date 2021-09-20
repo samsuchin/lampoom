@@ -50,10 +50,13 @@ class Magazine(models.Model):
     description = HTMLField(null=True, blank=True)
     special_link = models.URLField(null=True, blank=True)
     featured = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     cover_image = models.ForeignKey(ArtWork, null=True, blank=True, on_delete=models.SET_NULL)
 
     issue_editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="issue_editor")
+    custom_issue_editor = models.CharField(max_length=200, null=True, blank=True)
     art_editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="art_editor")
+    custom_art_editor = models.CharField(max_length=200, null=True, blank=True)
     created_at = models.DateTimeField()
 
     def __str__(self) -> str:
@@ -64,6 +67,7 @@ class Magazine(models.Model):
         for work in self.works.all():
             total+=work.laugh_score
         return total
+        
 
 class Book(models.Model):
     title = models.CharField(max_length=200)

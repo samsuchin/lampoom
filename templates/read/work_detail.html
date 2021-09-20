@@ -11,7 +11,7 @@
         <div class="col-12 col-md-8 mx-auto">
             <div id="artWorks" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    {% for art in work.art_works.all %}
+                    {% for art in art_works %}
                     <div class="carousel-item {% if forloop.first %}active{%endif%}">
                         <img src="{{art.image.url}}" class="d-block w-100" alt="...">
                         <div class="text-center work fw-bold d-block mt-2 mb-4">

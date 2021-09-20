@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'read',
     'ads',
     'tinymce',
-    'widget_tweaks'
+    'widget_tweaks',
+    'crispy_forms',
 
 ]
 
@@ -143,6 +144,8 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "account.User"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGGING = {
     'version': 1,

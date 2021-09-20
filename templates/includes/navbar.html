@@ -2,7 +2,7 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
-<div class="top-banner"><i class="fa fa-bell mx-2"></i>   Subscribe to the <a class="" href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Harvard Lampoon</a></div>
+<div class="top-banner"><i class="fa fa-bell mx-2"></i>   Subscribe to the <a class="" href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Harvard Lampoom</a></div>
 <div class="container my-5">
     <div class="row">
         <div class="col-3 d-flex align-items-center justify-content-start">
@@ -18,7 +18,8 @@
             </a>
         </div>
         <div class="col-3 d-flex align-items-center justify-content-end">
-            <a href="#search-lightbox" class="" id="">
+              
+            <a href="#search-lightbox" class="" id="" data-bs-toggle="modal" data-bs-target="#searchModal">
                 <img id="search" class="shadow" width="40px" src="{% static 'images/search.svg' %}" alt="">
             </a>
         </div>
@@ -33,7 +34,7 @@
     </a>
     <ul class="dropdown-menu shadow" aria-labelledby="readDrop">
         <li><a class="dropdown-item" href="{% url 'works' %}">Works</a></li>
-        <li><a class="dropdown-item" href="#">Magazines</a></li>
+        <li><a class="dropdown-item" href="{% url 'magazines' %}">Magazines</a></li>
         <li><a class="dropdown-item" href="#">Books</a></li>
     </ul>
     <a class="nav-link" href="{% url 'works' %}">Comp</a>

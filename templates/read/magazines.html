@@ -10,9 +10,9 @@
   <h1 class="text-center py-3">Magazines</h1>
   <!-- <input type="text" class="form-control"> -->
     <div class="row g-4">
-      {% for work in works %}
-      <div class="col-6 col-lg-4">
-        {% include 'includes/work_card.html' %}
+      {% for magazine in magazines %}
+      <div class="col-6 col-lg-3">
+        {% include 'includes/magazine_card.html' %}
       </div>
       {% endfor %}
 

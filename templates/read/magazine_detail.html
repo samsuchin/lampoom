@@ -11,14 +11,22 @@
             
             <img src="{{magazine.cover_image.image.url}}" class="img-fluid" alt="">
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4 info-text">
             <h1 class="text-center mt-2 mt-lg-0">{{magazine.title}}</h1>
             <hr>
             {% if magazine.issue_editor %}
-            <div><span class="fw-bold">Issue Editor: </span>{{magazine.issue_editor}}</div>
+                {% if magazine.custom_issue_editor %}
+                <div><span class="fw-bold">Issue Editor: </span>{{magazine.custom_issue_editor}}</div>
+                {% else %}
+                <div class=""><span class="fw-bold">Issue Editor: </span><a class="work-link" href="{% url 'account_detail' magazine.issue_editor.url_username %}">{{magazine.issue_editor.display_name}}</a></div>
+                {% endif %}
             {% endif %}
             {% if magazine.art_editor %}
-            <div><span class="fw-bold">Art Editor: </span>{{magazine.art_editor}}</div>
+                {% if magazine.custom_art_editor %}
+                <div><span class="fw-bold">Issue Editor: </span>{{magazine.custom_art_editor}}</div>
+                {% else %}
+                <div class=""><span class="fw-bold">Art Editor: </span><a class="work-link" href="{% url 'account_detail' magazine.art_editor.url_username %}">{{magazine.art_editor.display_name}}</a></div>
+                {% endif %}
             {% endif %}
             <div><span class="fw-bold">Date: </span>{{magazine.created_at|date:"F Y"}}</div>
             <hr>

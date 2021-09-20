@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/multi.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'manage_articles' %}">
+    <i class="fas fa-arrow-alt-circle-left fa-2x purple"></i>
+</a>
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+        <div id="artWorks" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for art in art_works %}
+                <div class="carousel-item {% if forloop.first %}active{%endif%}">
+                    <img src="{{art.image.url}}" class="d-block w-100" alt="...">
+                    <div class="text-center work fw-bold d-block mt-2 mb-4">
+                        <div>{{art.title}} by {{art.get_display_name}}</div>
+                        <div>Order: {{art.order}}</div>
+                    </div>
+                  </div>
+                  
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#artWorks" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#artWorks" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            
+          </div>
+          </div>
+
+    </div>
+    <form method="POST" action="">{% csrf_token %}
+
+<div class="row g-3">
+    {% crispy form %}
+    {{form.media}}
+</div>
+
+<button class="btn btn-primary save-changes mx-auto">Save Changes</button>
+
+</form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/multi.js' %}"></script>
+<script>
+    var select_element = document.getElementById("id_art_works");
+multi(select_element);
+</script>
+{% endblock %}
