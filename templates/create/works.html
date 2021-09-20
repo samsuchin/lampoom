@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex align-items-center py-3">
+        <h2 class="flex-grow-1 fw-bold">My Works</h2>
+        <div><button data-bs-toggle="modal" data-bs-target="#createWork" class="btn btn-primary">Create <i class="fa fa-plus ms-1"></i></button></div>
+    </div>
+    <div class="row g-4">
+        {% for work in works %}
+        <div class="col-6 col-md-4">
+            <a class="manage-link" href="{% url 'manage_work_detail' work.pk %}">
+            <div class="card shadow border-0 manage-detail">
+                <img src="{{work.get_preview_image.image.url}}" class="img-fluid" alt="">
+                <div class="card-body">
+                <h5 class="text-center card-title pt-2 mb-0">{{work.title}}</h5>
+                <div class="text-muted text-center">Created {{work.created_at|date:"F Y" }}</div>
+                <div class="mt-2">{{work.content|truncatechars_html:75|safe}}</div>
+                </div>
+            </div>
+          
+    
+
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'includes/pagination.html' with page_obj=works %}
+
+    <div class="modal fade" id="createWork" tabindex="-1" aria-labelledby="createWorkLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createWorkLabel">Create Work</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="POST">{% csrf_token %}
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="" class="form-label">Title</label>
+                    <input required type="text" name="title" class="form-control" id="">
+                    <div id="emailHelp" class="form-text">This can be changed later</div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+</div>
+{% endblock %}

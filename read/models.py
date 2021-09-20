@@ -6,12 +6,12 @@ class Work(models.Model):
     title = models.CharField(max_length=200)
     art_works = models.ManyToManyField("ArtWork", related_name="works")
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    content = HTMLField()
-    created_at = models.DateTimeField()
+    content = HTMLField(null=True, blank=True)
+    created_at = models.DateTimeField(null=True, blank=True, help_text="Written as YYYY-MM-DD HH:MM:SS")
     voice_file = models.FileField(upload_to="voices/", null=True, blank=True)
     active = models.BooleanField(default=True)
     classic = models.BooleanField(default=False)
-    custom_display_name = models.CharField(max_length=200, null=True, blank=True)
+    custom_display_name = models.CharField(max_length=200, null=True, blank=True, help_text="Leave blank if you want your name to show up")
     featured = models.BooleanField(default=False)
     laugh_score = models.PositiveBigIntegerField(default=0)
     original_work = models.BooleanField(default=True)
@@ -34,6 +34,7 @@ class ArtWork(models.Model):
     order = models.IntegerField(default=1)
     custom_display_name = models.CharField(max_length=200, null=True, blank=True)
     original_work = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return self.title
@@ -43,6 +44,8 @@ class ArtWork(models.Model):
             return self.custom_display_name
         return self.artist.display_name
         
+    class Meta:
+        ordering = ["-created_at"]
 
 class Magazine(models.Model):
     title = models.CharField(max_length=255)
