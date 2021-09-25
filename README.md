@@ -6,3 +6,6 @@ New harvard Lampoon website built with Django.
 * Ability for writers, artisits, and business to easily create content
 * Improved look and work, magazine, and book browsing
 
+
+
+v35nD9fSpL2xmdbG

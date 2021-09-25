@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex align-items-center py-3">
+        <h2 class="flex-grow-1 fw-bold">My Ads</h2>
+        <div><button data-bs-toggle="modal" data-bs-target="#createAd" class="btn btn-primary">Create <i class="fa fa-plus ms-1"></i></button></div>
+    </div>
+    <div class="row g-4 mb-4" data-masonry='{"percentPosition": true }'>
+        {% for ad in ads %}
+        <div class="col-6 col-md-4">
+            <a class="manage-link" href="{% url 'manage_ad_detail' ad.pk %}">
+            <div class="card shadow border-0 manage-detail">
+                <img src="{{ad.image.url}}" class="img-fluid" alt="">
+                <div class="card-body">
+                <h5 class="text-center card-title pt-2 mb-0">{{ad.title}}</h5>
+                <h6 class="text-center text-muted mb-0">{{ad.get_ad_type_display}} Ad</h6>
+                <div class="text-muted text-center">Created {{ad.created_at|date:"F Y" }}</div>
+                </div>
+            </div>
+          
+
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'includes/pagination.html' with page_obj=ads %}
+
+    <div class="modal fade" id="createAd" tabindex="-1" aria-labelledby="createAdLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createAdLabel">Create Ad</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form enctype="multipart/form-data" accept="image/png, image/jpeg" action="" method="POST">{% csrf_token %}
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="" class="form-label">Title</label>
+                    <input required type="text" name="title" class="form-control" id="">
+                    <div id="emailHelp" class="form-text">This can be changed later</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">URL</label>
+                    <input type="text" name="url" class="form-control" id="">
+
+                  </div>
+                  <div class="mb-3">
+                      <label for="">Ad Type</label>
+                      <select required class="form-control" name="ad_type" id="">
+                          <option selected value="">-------</option>
+                          {% for key, type in ad_types %}
+                            <option value="{{key}}">{{type}}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Image</label>
+                    <input required type="file" name="image" class="form-control" id="">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+{% endblock %}

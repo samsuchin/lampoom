@@ -7,17 +7,37 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-5">
-  <h1 class="text-center py-3">Works</h1>
-  <!-- <input type="text" class="form-control"> -->
-    <div class="row g-4">
+<div class="container pb-5">
+  {% include 'includes/ad.html' with ad_type='banner' %}
+  <h1 class="text-center pt-3">Works</h1>
+  <div class="row">
+    <form method="GET" action="">
+    <div class="mb-3 col-12 col-md-6 mx-auto">
+      <input placeholder="Filter Works..." type="text" name="filter" value="{{filter}}" class="form-control">
+    </div>
+  </form>
+  </div>
+    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+      {% if works %}
+
       {% for work in works %}
+      {% if forloop.counter|divisibleby:4 %}
+      <div class="col-6 col-lg-4">
+      {% include 'includes/ad.html' with ad_type='block' %}
+    </div>
+      {% endif %}
       <div class="col-6 col-lg-4">
         {% include 'includes/work_card.html' %}
-      </div>
+        </div>
       {% endfor %}
+      {% else %}
+      <h1 class="text-center">No results :(</h1>
+      {% endif %}
 
   {% include 'includes/pagination.html' with page_obj=works %}
         </div>
 </div>
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 {% endblock %}

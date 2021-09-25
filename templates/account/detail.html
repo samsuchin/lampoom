@@ -6,9 +6,10 @@
 <link rel="stylesheet" href="{% static 'css/read.css' %}">
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container pb-5">
     <div class="text-center">
-        <img src="{{account.profile_picture.url}}" class="profile-picture">
+        
+        <img src="{% if account.profile_picture %}{{account.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
         <h2 class="profile-name pt-3 mb-0">{{account.get_name}}</h2>
         <div class="board mb-0">{{account.get_board_display}} Board {{account.graduation_year}}</div>
         <div class="bio">{{account.bio|linebreaks}}</div>
@@ -20,8 +21,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li><a class="dropdown-item" href="{% url 'manage_works' %}">Works</a></li>
-                  <li><a class="dropdown-item" href="#">Art Work</a></li>
-                  <li><a class="dropdown-item" href="#">Advertisement</a></li>
+                  <li><a class="dropdown-item" href="{% url 'manage_artworks' %}">Art Work</a></li>
+                  <li><a class="dropdown-item" href="{% url 'manage_ads' %}">Advertisement</a></li>
                 </ul>
               </div>
             {% else %}

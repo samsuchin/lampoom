@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex align-items-center py-3">
+        <h2 class="flex-grow-1 fw-bold">My Art Works</h2>
+        <div><button data-bs-toggle="modal" data-bs-target="#createArtWork" class="btn btn-primary">Create <i class="fa fa-plus ms-1"></i></button></div>
+    </div>
+    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+        {% for art in art_works %}
+        <div class="col-6 col-md-4">
+            <a class="manage-link" href="{% url 'manage_artwork_detail' art.pk %}">
+            <div class="card shadow border-0 manage-detail">
+                <img src="{{art.image.url}}" class="img-fluid" alt="">
+                <div class="card-body">
+                <h5 class="text-center card-title pt-2 mb-0">{{art.title}}</h5>
+                <div class="text-muted text-center">Created {{art.created_at|date:"F Y" }}</div>
+                </div>
+            </div>
+          
+
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'includes/pagination.html' with page_obj=art_works %}
+
+    <div class="modal fade" id="createArtWork" tabindex="-1" aria-labelledby="createArtWorkLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createArtWorkLabel">Create Art Work</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form enctype="multipart/form-data" accept="image/png, image/jpeg" action="" method="POST">{% csrf_token %}
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="" class="form-label">Title</label>
+                    <input required type="text" name="title" class="form-control" id="">
+                    <div id="emailHelp" class="form-text">This can be changed later</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Image</label>
+                    <input required type="file" name="image" class="form-control" id="">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+{% endblock %}

@@ -53,11 +53,6 @@ h1{
     background-color:#b374da;
 }
 
-.magazine-index-image{
-    object-fit: cover;
-    width: 100%;
-    height: 600px;
-}
 .card-title{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;

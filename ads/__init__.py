@@ -1,5 +1,5 @@
 class ADS:
-    SIZE_TYPES = [
+    AD_TYPES = [
         ("banner", "Banner"),
         ("block", "Block"),
         ("popup", "Popup")

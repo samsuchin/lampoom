@@ -2,7 +2,7 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 {% endblock %}
-<footer class="footer mt-5 py-4">
+<footer class="footer mt-auto py-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12 col-lg-6 mx-auto">
@@ -10,11 +10,18 @@
                     <a href="" class="mx-2 footer-link">About</a>
                     <div class="mx-2">|</div>
                     <a href="{% url 'index' %}" class="mx-2 footer-link">Home</a>
+                    <div class="mx-2">|</div>
+                    {% if request.user.is_authenticated %}
+                    <a class="mx-2 footer-link" href="{% url 'account_detail' request.user.url_username %}">My Profile</a>
+                    <div class="mx-2">|</div>
+                    <a class="mx-2 footer-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="mx-2 footer-link" href="{% url 'login' %}">Login</a>
+                    {% endif %}
                 </div>
             </div>
  
-    
-            <div class="text-center">a Sam Suchin production</div>
+
             <div class="text-center">Lampoom &copy; <script>document.write(new Date().getFullYear())</script></div>
     </div>
     </div>

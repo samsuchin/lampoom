@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/multi.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex align-items-center">
+        <a class="flex-grow-1" href="{% url 'manage_ads' %}">
+            <i class="fas fa-arrow-alt-circle-left fa-2x purple"></i>
+        </a>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-12 col-md-8 mx-auto mb-2">
+            <img src="{{ad.image.url}}" class="img-fluid" alt="">
+    </div>
+    </div>
+
+    <form enctype="multipart/form-data" method="POST">{% csrf_token %}
+<div class="row g-3 mb-4">
+    {% crispy form %}
+    {{form.media}}
+    <button type="submit" class="btn btn-primary save-changes mx-auto">Save Changes</button>
+</div>
+
+
+</form>
+</div>
+{% endblock %}

@@ -49,7 +49,7 @@ class ArtWork(models.Model):
 
 class Magazine(models.Model):
     title = models.CharField(max_length=255)
-    works = models.ManyToManyField(Work, related_name="magazines")
+    works = models.ManyToManyField(Work, related_name="magazines", blank=True)
     description = HTMLField(null=True, blank=True)
     special_link = models.URLField(null=True, blank=True)
     featured = models.BooleanField(default=False)

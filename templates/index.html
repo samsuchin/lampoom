@@ -2,15 +2,13 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/read.css' %}">
-
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block content %}
 
     <div class="container-fluid px-4">
-        <div class="text-center mb-4">
-            <img class="mx-auto img-fluid" src="{% static 'images/american_eagle.jpg' %}" alt="">
-        </div>
-        <div class="row">
+        {% include 'includes/ad.html' with ad_type='banner' %}
+        <div class="row pt-4">
             <div class="col order-1 order-lg-0">
                 {% for work in featured_works %}
                 {% include 'index/work1_card.html' %}
@@ -24,17 +22,34 @@
                 <div class="mb-3">
                 {% include 'index/work2_card.html' %}
                 {% if forloop.counter == 2 %}
-                <img class="img-fluid shadow mt-3" src="{% static 'images/american_eagle.jpg' %}" alt="">
+                <div class="pt-3">
+                {% include 'includes/ad.html' with ad_type='banner' %}
+                </div>
                 {% endif %}
-            </div>
+                </div>
                 {% endfor %}
             </div>
   
         </div>
-        <div class="text-center mb-4">
-            <img class="mx-auto img-fluid" src="{% static 'images/american_eagle.jpg' %}" alt="">
+        <div class="mb-4">
+            {% include 'includes/ad.html' with ad_type='banner' %}
         </div>
     </div>
-
+    <div class="subscribe-bg text-center py-3">
+            <div class="col-4 mx-auto">
+                <h3>Subscribe to the Harvard Lampoon</h3>
+                <div>Get the latest pieces delivered right to your door.</div>
+                <form target="_blank" action="https://checkout.subscriptiongenius.com/harvardlampoon.com/" method="POST">
+                    <input class="form-control sub-input my-2 text-center" type="text" placeholder="Enter your email address" name="" id="">
+                    <button class="btn btn-primary shadow">Submit</button>
+                </form>
+             
+            </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
+            <h1>Test here</h1>
+        </div>
+    </div>
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% if page_obj.has_other_pages %}
 <ul class="pagination p-3 justify-content-center">
   {% if page_obj.has_previous %}
-    <li><a class="page-link page-first" href="?page={{ page_obj.first }}">&laquo;</a></li>
+    <li><a class="page-link page-first" href="?page={{ page_obj.first }}&{{get_copy.urlencode}}">&laquo;</a></li>
   {% else %}
   {% endif %}
   {% for i in page_obj.paginator.page_range %}
@@ -10,14 +10,14 @@
     {% if page_obj.number == i %}
       <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
       {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
-      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ i }}&{{get_copy.urlencode}}">{{ i }}</a></li>
   {% endif %}
    
 
   {% endfor %}
 
   {% if page_obj.has_next %}
-    <li><a class="page-link page-last" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a></li>
+    <li><a class="page-link page-last" href="?page={{ page_obj.paginator.num_pages }}&{{get_copy.urlencode}}">&raquo;</a></li>
   {% else %}
   {% endif %}
 </ul>

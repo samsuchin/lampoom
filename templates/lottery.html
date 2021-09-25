@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row text-center">
+
+        <h3>Follow <a class="link-info" target="_blank" href="https://twitter.com/harvardlampoon">@harvardlampoon</a> on Twitter, and we will enter you in a lottery for a Lampoon party!</h3>
+        <div class="col-md-4 col-12 mx-auto">
+            <form class="mb-3" method="POST" action="">{% csrf_token %}
+                <input placeholder="Enter your twitter username" type="text" class="form-control text-center mb-3" name="twitter_username" id="">
+                <button class="btn btn-primary">Check</button>
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

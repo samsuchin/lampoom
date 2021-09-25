@@ -5,7 +5,11 @@
 <link rel="stylesheet" href="{% static 'css/detect.css' %}">
 {% endblock %}
 {% block content %}
-<div class="container my-5">
+
+<div class="container pb-5">
+    <div class="mb-4">
+        {% include 'includes/ad.html' with ad_type='banner' %}
+    </div>
     <div class="row">
 
         <div class="col-12 col-md-8 mx-auto">
@@ -42,7 +46,17 @@
                     <div>{{work.created_at|date:"F Y" }}</div>
                 </div>
             </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-12 col-md-9">
             <div class="mt-4">{{work.content | safe}}</div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="sticky-top pt-5">
+            {% include 'includes/ad.html' with ad_type='block' %}
+            
+        </div>
         </div>
 
     </div>

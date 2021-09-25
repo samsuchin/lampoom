@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load core_tags %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container pb-5">
+    {% include 'includes/ad.html' with ad_type='banner' %}
+    <h1 class="text-center pt-3">Search Results</h1>
+    <form class="mb-3" method="GET" action="{% url 'search' %}">{% csrf_token %}
+        <input type="text" class="form-control mx-auto" style="max-width: 700px;" name="search"
+        value="{{search}}" id="">
+        </form>
+    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+        {% for obj in results %}
+        {% if forloop.counter|divisibleby:4 %}
+        <div class="col-6 col-md-4">
+        {% include 'includes/ad.html' with ad_type='block' %}
+      </div>
+        {% endif %}
+        {% with obj|class_name as klass %}
+        <div class="col-6 col-md-4">
+        {% if klass == 'Work' %}
+
+            {% include 'includes/work_card.html' with work=obj %}
+
+        {% elif klass == 'Magazine' %}
+
+        {% include 'includes/magazine_card.html' with magazine=obj %}
+
+        {% elif klass == 'User' %}
+            <a class="card-link" href="{% url 'account_detail' obj.url_username %}">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <img src="{% if obj.profile_picture %}{{obj.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
+                <h3 class="profile-name pt-3 mb-0 work-link">{{obj.get_name}}</h3>
+                <div class="mb-0 text-muted">{{obj.get_board_display}} Board {{obj.graduation_year}}</div>
+                <div class="">{{obj.bio|linebreaks}}</div>
+            </div>
+        </div>
+    </a>
+
+        {% endif %}
+        </div>
+        {% endwith %}
+        {% endfor %}
+
+    </div>
+    {% include 'includes/pagination.html' with page_obj=results %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% load static %}
+{% load ads %}
+
+{% get_ad ad_type as ad %}
+{% if ad %}
+<div class="text-center">
+    <a target="_blank" href="{{ad.url}}">
+    <img src="{{ad.image.url}}" class="img-fluid shadow" alt="">
+    </a>
+</div>
+{% endif %}
