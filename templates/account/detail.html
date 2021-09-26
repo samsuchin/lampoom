@@ -13,7 +13,7 @@
         <h2 class="profile-name pt-3 mb-0">{{account.get_name}}</h2>
         <div class="board mb-0">{{account.get_board_display}} Board {{account.graduation_year}}</div>
         <div class="bio">{{account.bio|linebreaks}}</div>
-        <div class="">
+        <div class="d-flex justify-content-center align-items-center">
             {% if request.user == account %}
             <div class="dropdown">
                 <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,8 +23,10 @@
                   <li><a class="dropdown-item" href="{% url 'manage_works' %}">Works</a></li>
                   <li><a class="dropdown-item" href="{% url 'manage_artworks' %}">Art Work</a></li>
                   <li><a class="dropdown-item" href="{% url 'manage_ads' %}">Advertisement</a></li>
+                  <li><a class="dropdown-item" href="{% url 'account_settings' %}">Account Settings<i class="fa fa-cog fa-1x ms-2 "></i></a></li>
                 </ul>
               </div>
+
             {% else %}
             <a class="mx-1" href="mailto:{{account.email}}">
                 <button class="btn btn-primary shadow">Contact</button>

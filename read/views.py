@@ -1,6 +1,6 @@
 from ads.models import Ad
 from django.http.response import JsonResponse
-from read.models import ArtWork, Magazine, Work
+from read.models import ArtWork, Magazine, Work, Book
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 import json
@@ -78,3 +78,30 @@ def magazine_detail(request, magazine_pk):
         "magazine": magazine
     }
     return render(request, "read/magazine_detail.html", context)
+
+
+def books(request):
+    filter_qs = request.GET.get("filter", "")
+    books = Book.objects.filter(active=True).filter(
+    Q(title__icontains=filter_qs)|
+    Q(year_published__icontains=filter_qs)|
+    Q(description__icontains=filter_qs)).order_by("-created_at").distinct()
+    paginator = Paginator(books, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "books": page_obj,
+        "filter": filter_qs
+    }
+    get_copy = request.GET.copy()
+    if get_copy.get("page"):
+        get_copy.pop("page")
+    context["get_copy"] = get_copy
+    return render(request, "read/books.html", context)
+
+def book_detail(request, book_pk):
+    book = get_object_or_404(Book, pk=book_pk)
+    context = {
+        "book": book
+    }
+    return render(request, "read/book_detail.html", context)

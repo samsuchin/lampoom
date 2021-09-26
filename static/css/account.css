@@ -22,3 +22,11 @@
     font-family: 'Nunito', sans-serif;
     line-height: 20px;
 }
+.link{
+    color: #596172;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+.link:hover{
+    color: #b374da !important;
+}

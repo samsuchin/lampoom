@@ -1,0 +1,14 @@
+{% load static %}
+<a class="card-link" href="{% url 'book_detail' book.pk %}">
+    <div class="card shadow mb-4">
+    <img src="{{book.cover_image.image.url}}" class="card-img-top" alt="">
+
+    <div class="card-body text-center">
+    <div class="mb-1 mt-2">
+        <h2 class="card-title text-center mb-0">{{book.title}}</h2>
+    </div>
+    
+    <div class="card-text">{{book.description|truncatechars_html:200|safe}}</div>
+</div>
+    </div>
+</a>

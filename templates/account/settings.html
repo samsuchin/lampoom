@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row py-5">
+        <div class="col-12">
+            <h1>Account Settings</h1>
+            <div class="text-muted mb-3">View and change your account</div>
+            <div class="card">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="{% if account.profile_picture %}{{account.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
+                    </div>
+                    <h5>General Information</h5>
+                      <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input disabled readonly type="text" class="form-control" value="{{user.email}}">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Date Joined</label>
+                        <input disabled readonly type="text" class="form-control" value="{{user.date_joined}}">
+                      </div>
+                      {% include 'includes/form.html' %}
+                      <div class="">
+                        <a class="link" href="{% url 'password_change' %}">Change Password</a>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary w-50 my-3">Update</button>
+                    </div>
+                     
+        
+                </div>
+
+            </form>
+
+            </div>
+        </div>
+    
+    </div>
+</div>
+{% endblock %}

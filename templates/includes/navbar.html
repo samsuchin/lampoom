@@ -28,14 +28,14 @@
 
 <div class="d-flex justify-content-center my-3 d-none d-md-flex">
     <a class="nav-link {%if request.path == '/' %}active{%endif%}" href="{% url 'index' %}">Home</a>
-    <a class="nav-link" href="{% url 'works' %}">About</a>
+    <a class="nav-link" href="{% url 'about' %}">About</a>
     <a class="nav-link dropdown-toggle {%if 'read' in request.path %}active{%endif%}" href="{% url 'works' %}" id="readDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Read
     </a>
     <ul class="dropdown-menu shadow" aria-labelledby="readDrop">
         <li><a class="dropdown-item" href="{% url 'works' %}">Works</a></li>
         <li><a class="dropdown-item" href="{% url 'magazines' %}">Magazines</a></li>
-        <li><a class="dropdown-item" href="#">Books</a></li>
+        <li><a class="dropdown-item" href="{% url 'books' %}">Books</a></li>
     </ul>
     <a class="nav-link" href="{% url 'works' %}">Comp</a>
     <a class="nav-link" href="{% url 'works' %}">Masthead</a>

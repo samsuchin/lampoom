@@ -140,6 +140,20 @@ hr{
       border-top-left-radius: 0;
       border-top-right-radius: 0;
   }
+
+  .about-text{
+      color: #596172;
+  }
+
+  .icon-link{
+    color: #b374da;
+    text-decoration: none;
+    transition: all 300ms ease;
+  }
+  .icon-link:hover{
+    color: #733898;
+  }
+
 /* 
 
 #67278e

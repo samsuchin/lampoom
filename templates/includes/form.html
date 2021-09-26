@@ -11,22 +11,22 @@
 {% endif %}
 
 {% for field in form.visible_fields %}
-<div class="form-group">
+<div class="form-group mb-3">
   <div class="form-label">{{ field.label }}</div>
 
   {% if form.is_bound %}
     {% if field.errors %}
-      {% render_field field class="form-control mb-3 form-default is-invalid" %}
+      {% render_field field class="form-control form-default is-invalid" %}
       {% for error in field.errors %}
         <div class="invalid-feedback">
           {{ error }}
         </div>
       {% endfor %}
     {% else %}
-      {% render_field field class="form-control mb-3 form-default is-valid" %}
+      {% render_field field class="form-control form-default is-valid" %}
     {% endif %}
   {% else %}
-    {% render_field field class="form-control mb-3 form-default" %}
+    {% render_field field class="form-control form-default" %}
     
   {% endif %}
 

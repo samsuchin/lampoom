@@ -80,47 +80,18 @@ def lottery(request):
                 }
         
         response = requests.get(base_url, headers=headers)
-        # print(response.json())
-        for user in response.json()["data"]:
-            if user["id"] == "28849244":
-                print("FOLLOWS")
-                messages.success(request, "You have been entered in the lottery!")
-                return render(request, "lottery.html")
+        print(response.json())
+        result_count = int(response.json()["meta"]["result_count"])
+        if result_count > 0:
+            for user in response.json()["data"]:
+                if user["id"] == "28849244":
+                    print("FOLLOWS")
+                    messages.success(request, "You have been entered in the lottery!")
+                    return render(request, "lottery.html")
         print("Does not follow")
         messages.error(request, "You do not follow @harvardlampoon on twitter.")
     
     return render(request, "lottery.html")
 
-
-
-
-# def lottery(request):
-
-#     if request.method=="POST":
-#         username = request.POST.get("twitter_username")
-#         base_url = f"https://api.twitter.com/1.1/friendships/lookup.json"
-#         print(request.POST)
-        
-#         url_parameters = {
-#             "screen_name": username 
-#         }
-#         url = f"{base_url}?screen_name={username}"
-#         oauth_consumer_key = settings.TWITTER_API_KEY
-#         oauth_consumer_key_secret = settings.TWITTER_API_SECRET
-#         access_token = settings.TWITTER_ACCESS_TOKEN
-#         oauth_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
-#         oauth_nonce = str(getrandbits(64))
-#         oauth_timestamp = str(int(time.time()))
-#         oauth_signature = generate_signature(oauth_consumer_key, oauth_nonce, access_token, oauth_timestamp, base_url, oauth_consumer_key_secret, oauth_token_secret, username)
-
-#         headers = {
-#                 "Content-Type": "application/x-www-form-urlencoded",
-#                 "authorization": f'OAuth oauth_consumer_key="{oauth_consumer_key}", oauth_nonce="{oauth_nonce}", oauth_signature="{oauth_signature}", oauth_signature_method="HMAC-SHA1", oauth_timestamp="{oauth_timestamp}", oauth_token="{access_token}", oauth_version="1.0"'
-#                 }
-        
-#         response = requests.get(url, headers=headers)
-#         print(response.request.url)
-#         print(response.request.headers)
-#         print(response.json())
-    
-#     return render(request, "lottery.html")
+def about(request):
+    return render(request, "about.html")

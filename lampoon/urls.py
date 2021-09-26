@@ -8,7 +8,7 @@ urlpatterns = [
     path("", include("core.urls")),
     path("read/", include("read.urls")),
     path("create/", include("create.urls")),
-    path("profile/", include("account.urls")),
+    path("", include("account.urls")),
     path('tinymce/', include('tinymce.urls')),
 ]
 if settings.DEBUG:

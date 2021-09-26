@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    url_username = models.CharField(max_length=200, unique=True)
+    url_username = models.CharField(max_length=200, unique=True, help_text="harvardlampoon/@<YOUR_URL_USERNAME>/")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)

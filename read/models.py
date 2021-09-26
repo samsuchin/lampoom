@@ -79,6 +79,7 @@ class Book(models.Model):
     active = models.BooleanField(default=True)
     description = HTMLField()
     cover_image = models.ForeignKey(ArtWork, null=True, blank=True, on_delete=models.SET_NULL)
+    created_at = models.DateTimeField()
 
     def __str__(self) -> str:
         return self.title
