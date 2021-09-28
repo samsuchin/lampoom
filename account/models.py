@@ -22,7 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     board = models.CharField(choices=ACCOUNT.BOARD_CHOICES, max_length=20)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'display_name', 'profile_url_name', 'url_username']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'display_name', 'url_username']
 
     objects = CustomUserManager()
 
