@@ -48,6 +48,7 @@ h1{
 	text-align:center;
     border: none;
     transition: all 300ms ease;
+    z-index: 10000;
 }
 .laugh-track:hover{
     background-color:#b374da;

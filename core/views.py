@@ -80,7 +80,6 @@ def lottery(request):
                 }
         
         response = requests.get(base_url, headers=headers)
-        print(response.json())
         result_count = int(response.json()["meta"]["result_count"])
         if result_count > 0:
             for user in response.json()["data"]:

@@ -153,7 +153,11 @@ hr{
   .icon-link:hover{
     color: #733898;
   }
-
+.input-group-text{
+    background-color: transparent;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
 /* 
 
 #67278e

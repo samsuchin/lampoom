@@ -3,13 +3,20 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container mb-3">
+    <div class="mb-4">
+        {% include 'includes/ad.html' with ad_type='banner' %}
+    </div>
     <div class="row text-center">
 
         <h3>Follow <a class="link-info" target="_blank" href="https://twitter.com/harvardlampoon">@harvardlampoon</a> on Twitter, and we will enter you in a lottery for a Lampoon party!</h3>
         <div class="col-md-4 col-12 mx-auto">
             <form class="mb-3" method="POST" action="">{% csrf_token %}
-                <input placeholder="Enter your twitter username" type="text" class="form-control text-center mb-3" name="twitter_username" id="">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input placeholder="Twitter Username" type="text" class="form-control" name="twitter_username" id="">
+                  </div>
+        
                 <button class="btn btn-primary">Check</button>
             </form>
         </div>
