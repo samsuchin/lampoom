@@ -1,3 +1,4 @@
+{% if magazine %}
 <a class="card-link" href="{% url 'magazine_detail' magazine.pk %}">
     <div class="card shadow mb-4">
     <img src="{{magazine.cover_image.image.url}}" class="magazine-index-image" alt="">
@@ -12,3 +13,4 @@
 </div>
     </div>
 </a>
+{% endif %}
