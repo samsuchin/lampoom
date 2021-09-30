@@ -6,10 +6,11 @@ from django.core.paginator import Paginator
 from ads.models import Ad
 from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 
 @login_required
 def works(request):
-    works = Work.objects.filter(writer=request.user).order_by("created_at")
+    works = Work.objects.filter(writer=request.user).order_by("-created_at")
     paginator = Paginator(works, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -19,7 +20,7 @@ def works(request):
     }
 
     if request.method=="POST":
-        new_work = Work.objects.create(title=request.POST.get("title"), active=False, writer=request.user)
+        new_work = Work.objects.create(title=request.POST.get("title"), active=False, writer=request.user, created_at=timezone.now())
         return redirect(reverse("manage_work_detail", kwargs={"pk": new_work.pk}))
 
     return render(request, "create/works.html", context)

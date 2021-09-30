@@ -7,7 +7,7 @@ class Work(models.Model):
     art_works = models.ManyToManyField("ArtWork", related_name="works")
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     content = HTMLField(null=True, blank=True)
-    created_at = models.DateTimeField(null=True, blank=True, help_text="Written as YYYY-MM-DD HH:MM:SS")
+    created_at = models.DateField(null=True, blank=True, help_text="Written as YYYY-MM-DD")
     voice_file = models.FileField(upload_to="voices/", null=True, blank=True)
     active = models.BooleanField(default=True)
     classic = models.BooleanField(default=False)
@@ -60,7 +60,7 @@ class Magazine(models.Model):
     custom_issue_editor = models.CharField(max_length=200, null=True, blank=True)
     art_editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="art_editor")
     custom_art_editor = models.CharField(max_length=200, null=True, blank=True)
-    created_at = models.DateTimeField()
+    created_at = models.DateField(null=True, blank=True, help_text="Written as YYYY-MM-DD")
 
     def __str__(self) -> str:
         return self.title
@@ -79,7 +79,7 @@ class Book(models.Model):
     active = models.BooleanField(default=True)
     description = HTMLField()
     cover_image = models.ForeignKey(ArtWork, null=True, blank=True, on_delete=models.SET_NULL)
-    created_at = models.DateTimeField()
+    created_at = models.DateField(null=True, blank=True, help_text="Written as YYYY-MM-DD")
 
     def __str__(self) -> str:
         return self.title
