@@ -1,5 +1,6 @@
 h1{
     font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Sorts Mill Goudy', serif; */
     font-weight:bolder;
 }
 .work{
@@ -56,10 +57,12 @@ h1{
 
 .card-title{
     font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Sorts Mill Goudy', serif; */
     font-weight: bold;
 }
 .card-text{
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Sorts Mill Goudy', serif; */
     color: #596172;
 }
 

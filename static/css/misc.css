@@ -1,0 +1,12 @@
+p{
+    color: #596172;
+    font-weight: 100;
+}
+a{
+    color: #596172;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+a:hover{
+    color: #b374da !important;
+}

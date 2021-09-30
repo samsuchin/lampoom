@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito&family=Sorts+Mill+Goudy&display=swap');
 
 html{
     height: 100%;
 }
 body{
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Sorts Mill Goudy', serif; */
 }
 
 .page-item>.page-link {

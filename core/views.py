@@ -17,10 +17,12 @@ def index(request):
     works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:5]
     featured_works = Work.objects.filter(featured=True, active=True).order_by("?").distinct()[:2]
     magazine = Magazine.objects.filter(featured=True, active=True).order_by("created_at").first()
+    users = get_user_model().objects.filter(is_active=True).order_by("?").distinct()[:3]
     context = {
         "featured_works": featured_works,
         "works": works,
-        "magazine": magazine
+        "magazine": magazine,
+        "users": users
     }
     return render(request, "index.html", context)
 
@@ -94,3 +96,12 @@ def lottery(request):
 
 def about(request):
     return render(request, "about.html")
+
+def masthead(request):
+    return render(request, "masthead.html")
+
+def comp(request):
+    return render(request, "comp.html")
+
+def contact(request):
+    return render(request, "contact.html")

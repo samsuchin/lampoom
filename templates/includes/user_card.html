@@ -1,0 +1,11 @@
+{% load static %}
+<a class="card-link" href="{% url 'account_detail' obj.url_username %}">
+    <div class="card shadow">
+        <div class="card-body text-center">
+            <img src="{% if obj.profile_picture %}{{obj.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
+            <h3 class="profile-name pt-3 mb-0 work-link">{{obj.get_name}}</h3>
+            <div class="mb-0 text-muted">{{obj.get_board_display}} Board {{obj.graduation_year}}</div>
+            <div class="">{{obj.bio|linebreaks}}</div>
+        </div>
+    </div>
+</a>

@@ -37,9 +37,9 @@
         <li><a class="dropdown-item" href="{% url 'magazines' %}">Magazines</a></li>
         <li><a class="dropdown-item" href="{% url 'books' %}">Books</a></li>
     </ul>
-    <a class="nav-link" href="{% url 'works' %}">Comp</a>
-    <a class="nav-link" href="{% url 'works' %}">Masthead</a>
-    <a class="nav-link" href="{% url 'works' %}">Contact</a>
+    <a class="nav-link" href="{% url 'comp' %}">Comp</a>
+    <a class="nav-link" href="{% url 'masthead' %}">Masthead</a>
+    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
     <a class="nav-link" href="https://opensea.io/collection/samburgers">NFTs</a>
     <a class="nav-link" href="{% url 'lottery' %}">Lottery</a>
     {% if request.user.is_authenticated %}

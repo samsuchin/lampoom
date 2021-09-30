@@ -6,9 +6,10 @@
 
 .profile-name{
     color: black;
-    /* font-family: 'Nunito', sans-serif; */
+    font-family: 'Nunito', sans-serif;
     font-weight: bold;
-    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Sorts Mill Goudy', serif; */
     line-height: 30px;
 }
 .board{

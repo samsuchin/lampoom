@@ -96,7 +96,7 @@ class ad_detail(UpdateView, LoginRequiredMixin):
     model = Ad
     template_name = "create/ad_detail.html"
     context_object_name = "ad"
-    fields = ["title", "image",  "ad_type", "active"]
+    fields = ["title", "image",  "ad_type", "url", "active"]
 
     def post(self, request, *args, **kwargs):
         print(request.POST)
