@@ -7,7 +7,9 @@
       <div class="work-link fw-bold">{% if work.custom_display_name %}{{work.custom_display_name}}{% else %}<a class="work-link" href="{% url 'account_detail' work.writer.url_username %}">By {{work.get_display_name}}</a>{% endif %}</div>
     </div>
     <div class="">
+      <a href="{% url 'work_detail' work.pk %}">
       <img src="{{work.get_preview_image.image.url}}" class="" width="200px" alt="...">
+    </a>
     </div>
     </div>
   </div>
