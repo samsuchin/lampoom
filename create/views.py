@@ -86,7 +86,7 @@ def ads(request):
     }
 
     if request.method=="POST":
-        new_ad = Ad.objects.create(title=request.POST.get("title"), active=False, image=request.FILES.get("image"), ad_type=request.POST.get("ad_type"), created_by=request.user, url=request.POST.get("url"))
+        new_ad = Ad.objects.create(title=request.POST.get("title"), active=True, image=request.FILES.get("image"), ad_type=request.POST.get("ad_type"), created_by=request.user, url=request.POST.get("url"))
         return redirect(reverse("manage_ad_detail", kwargs={"pk": new_ad.pk}))
 
     return render(request, "create/ads.html", context)
