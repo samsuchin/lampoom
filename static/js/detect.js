@@ -1,5 +1,6 @@
 
 const video = document.getElementById("video");
+video.setAttribute("playsinline", true)
 const canvas = document.getElementById("overlay");
 const expressionEl = document.getElementById("expressions");
 const video_view = document.getElementById("video-view");

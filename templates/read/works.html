@@ -17,7 +17,7 @@
     </div>
   </form>
   </div>
-    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+    <div class="row g-4 grid">
       {% if works %}
 
       {% for work in works %}
@@ -40,4 +40,10 @@
 {% endblock %}
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script>
+setTimeout(function () {
+  var msnry = new Masonry('.grid');
+  msnry.layout();
+}, 300);
+</script>
 {% endblock %}

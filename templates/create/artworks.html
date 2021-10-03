@@ -9,7 +9,7 @@
         <h2 class="flex-grow-1 fw-bold">My Art Works</h2>
         <div><button data-bs-toggle="modal" data-bs-target="#createArtWork" class="btn btn-primary">Create <i class="fa fa-plus ms-1"></i></button></div>
     </div>
-    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+    <div class="row g-4 grid" data-masonry='{"percentPosition": true }'>
         {% for art in art_works %}
         <div class="col-6 col-md-4">
             <a class="manage-link" href="{% url 'manage_artwork_detail' art.pk %}">
@@ -60,4 +60,10 @@
 {% endblock %}
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script>
+  setTimeout(function () {
+    var msnry = new Masonry('.grid');
+    msnry.layout();
+  }, 300);
+  </script>
 {% endblock %}

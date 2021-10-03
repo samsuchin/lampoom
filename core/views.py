@@ -105,3 +105,6 @@ def comp(request):
 
 def contact(request):
     return render(request, "contact.html")
+
+def features(request):
+    return render(request, "features.html")

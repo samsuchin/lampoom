@@ -16,7 +16,7 @@
         <input type="text" class="form-control mx-auto" style="max-width: 700px;" name="search"
         value="{{search}}" id="">
         </form>
-    <div class="row g-4" data-masonry='{"percentPosition": true }'>
+    <div class="row g-4 grid" data-masonry='{"percentPosition": true }'>
         {% for obj in results %}
         {% if forloop.counter|divisibleby:4 %}
         <div class="col-6 col-md-4">
@@ -49,4 +49,10 @@
 
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script>
+    setTimeout(function () {
+      var msnry = new Masonry('.grid');
+      msnry.layout();
+    }, 300);
+    </script>
 {% endblock %}
