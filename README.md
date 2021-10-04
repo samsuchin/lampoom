@@ -35,4 +35,6 @@ New harvard Lampoon website built with Django.
 * NFT store page
 * 1% chance to redirect website
 
+
+
 v35nD9fSpL2xmdbG
