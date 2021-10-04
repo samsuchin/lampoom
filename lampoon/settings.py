@@ -129,7 +129,7 @@ TWITTER_ACCESS_TOKEN = env("TWITTER_ACCESS_TOKEN")
 TWITTER_ACCESS_TOKEN_SECRET = env("TWITTER_ACCESS_TOKEN_SECRET")
 
 USE_I18N = True
-
+HASH_KEY = env("HASH_KEY")
 USE_L10N = True
 
 USE_TZ = True
@@ -153,7 +153,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "account.User"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+AUTHENTICATION_BACKENDS = ['account.backend.MyBackend']
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

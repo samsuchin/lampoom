@@ -15,7 +15,6 @@ New harvard Lampoon website built with Django.
 * AI facial expression recognition for tracking "laughs" (smiles) on each work
 * AI celebrity vocal deep fakes can speak work titles
 * Lottery feature to check if user follows @harvardlampoon on twitter (twitter API) to enter a "lottery" for parties
-
 * Different advertisements are randomly displayed every page refresh
 * New mosaic styled homepage with changing works and advertisements each visit
 * Improved works, magazines, and books list view with filtering
@@ -34,6 +33,6 @@ New harvard Lampoon website built with Django.
 * Strong data and security measures
 * Mobile friendly
 * NFT store page
-
+* 1% chance to redirect website
 
 v35nD9fSpL2xmdbG
