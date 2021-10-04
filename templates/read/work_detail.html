@@ -36,7 +36,7 @@
                 
               </div>
             <div class="text-center">
-                <h3 class="">{{work.title}}{% if work.voice_file %}
+                <h3 id="title-element" class="">{{work.title}}{% if work.voice_file %}
                     <button class="play-sound" onclick="playAudio('{{work.voice_file.url}}')"><i class="fa fa-volume-up"></i></button>
                     {% endif %}</h3>
                     <h5 class="text-center"><span id="laugh-score" class="badge bg-purple">{{work.laugh_score}} Laughs</span></h5>
@@ -80,6 +80,17 @@
         var audio = new Audio(audio_file)
         audio.play()
     }
+    // {% if work.voice_file %}
+    // var played = false;
+    // var title_el = document.getElementById("title-element")
+    // window.addEventListener("scroll", (e)=>{
+    //     if(title_el.getBoundingClientRect().top < 0 && !played){
+    //         document.getElementById('beep').muted = false;
+    //         document.getElementById('beep').play();
+    //         played = true;
+    //     }
+    // })
+    // {% endif %}
     
 
 </script>
