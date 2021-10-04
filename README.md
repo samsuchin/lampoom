@@ -1,5 +1,7 @@
 New harvard Lampoon website built with Django.
 
+[Harvard Lampoom](https://www.harvardlampoom.com)
+
 # Features
 * Portfolio pages to showcase articles and art
 * AI facial recognition on any article to measure laugh score from readers
