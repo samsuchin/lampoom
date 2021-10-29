@@ -1,11 +1,15 @@
 from ads.models import Ad
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponseRedirect
 from read.models import ArtWork, Magazine, Work, Book
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 import json
 from django.db.models.functions import Lower
-from django.db.models import Q
+from django.db.models import Q, base
+import requests
+from django.conf import settings
+from django.templatetags.static import static
+import os
 
 def detect(request):
     return render(request, "read/smile_detect.html")
@@ -38,7 +42,8 @@ def work_detail(request, work_pk):
     art_works = work.art_works.all().order_by("order")
     context = {
         "work": work,
-        "art_works": art_works
+        "art_works": art_works,
+        "PRODUCT_API_URL": settings.PRODUCT_API_URL
     }
     return render(request, "read/work_detail.html", context)
 
@@ -105,3 +110,4 @@ def book_detail(request, book_pk):
         "book": book
     }
     return render(request, "read/book_detail.html", context)
+
