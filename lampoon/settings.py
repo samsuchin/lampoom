@@ -152,6 +152,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "account.User"
 
+PRODUCT_API_URL = env("PRODUCT_API_URL")
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTHENTICATION_BACKENDS = ['account.backend.MyBackend']
 LOGGING = {
