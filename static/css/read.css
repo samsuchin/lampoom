@@ -70,3 +70,13 @@ h1{
     font-size: 18px;
 }
 
+.buy-icon{
+	width:30px;
+	height:30px;
+	background-color:#67278e;
+	color:#FFF;
+	border-radius: 50%;
+	text-align:center;
+    border: none;
+    transition: all 300ms ease;
+}
