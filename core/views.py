@@ -17,7 +17,7 @@ def index(request):
     works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:8]
     featured_works = Work.objects.filter(featured=True, active=True).order_by("?").distinct()[:2]
     magazine = Magazine.objects.filter(featured=True, active=True).order_by("created_at").first()
-    users = get_user_model().objects.filter(is_active=True).order_by("?").distinct()[:3]
+    users = get_user_model().objects.order_by("?").distinct()[:3]
     context = {
         "featured_works": featured_works,
         "works": works,
@@ -42,7 +42,7 @@ def search(request):
     Q(works__writer__last_name__icontains=search)|
     Q(works__custom_display_name__icontains=search)).order_by("-created_at").distinct()
 
-    users = get_user_model().objects.filter(is_active=True).filter(
+    users = get_user_model().objects.filter(
         Q(display_name__icontains=search)|
         Q(first_name__icontains=search)|
         Q(last_name__icontains=search)).order_by("-date_joined").distinct()
