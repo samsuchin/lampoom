@@ -56,6 +56,7 @@ async function refreshState() {
         try{
             const detections = await faceapi.detectSingleFace(video).withFaceExpressions()
             if (detections){
+                console.log(detections.expressions)
                 let happiness = Math.trunc(detections.expressions.happy * 100)
                 drawResults(detections)
                 if(happiness > 98){

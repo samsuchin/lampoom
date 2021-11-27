@@ -4,7 +4,8 @@ from tinymce.models import HTMLField
 
 class Work(models.Model):
     title = models.CharField(max_length=200)
-    art_works = models.ManyToManyField("ArtWork", related_name="works")
+    art_work = models.ForeignKey("ArtWork", related_name="works", on_delete=models.CASCADE, null=True)
+    magazine = models.ForeignKey("Magazine", related_name="works", on_delete=models.SET_NULL, null=True, blank=True)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     content = HTMLField(null=True, blank=True)
     created_at = models.DateField(null=True, blank=True, help_text="Written as YYYY-MM-DD")
@@ -25,7 +26,7 @@ class Work(models.Model):
         return self.writer.display_name
     
     def get_preview_image(self):
-        return self.art_works.all().order_by("order").first()
+        return self.art_work
 
 class ArtWork(models.Model):
     artist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
@@ -49,7 +50,6 @@ class ArtWork(models.Model):
 
 class Magazine(models.Model):
     title = models.CharField(max_length=255)
-    works = models.ManyToManyField(Work, related_name="magazines", blank=True)
     description = HTMLField(null=True, blank=True)
     special_link = models.URLField(null=True, blank=True)
     featured = models.BooleanField(default=False)

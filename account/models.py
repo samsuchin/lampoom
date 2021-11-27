@@ -14,6 +14,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     graduation_year = models.CharField(max_length=50)
+
+    use_real_name = models.BooleanField(default=False)
+
     display_name = models.CharField(max_length=200)
     bio = models.TextField(max_length=5000, null=True, blank=True)
 
@@ -37,4 +40,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_picture_preview.short_description = 'Image'
 
     def get_name(self):
-        return f"{self.first_name} {self.last_name}"
+        if self.use_real_name:
+            return f"{self.first_name} {self.last_name}"
+        return self.display_name

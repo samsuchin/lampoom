@@ -10,7 +10,7 @@
             <h1>Account Settings</h1>
             <div class="text-muted mb-3">View and change your account</div>
             <div class="card">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                 
                 <div class="card-body">
@@ -27,6 +27,10 @@
                         <input disabled readonly type="text" class="form-control" value="{{user.date_joined}}">
                       </div>
                       {% include 'includes/form.html' %}
+                      <div class="form-check form-switch mb-3">
+                        <input name="use_real_name" class="form-check-input" type="checkbox" role="switch" id="id_use_real_name" {% if user.use_real_name %}checked{% endif %}>
+                        <label class="form-check-label" for="id_use_real_name">Use real name?</label>
+                      </div>
                       <div class="">
                         <a class="link" href="{% url 'password_change' %}">Change Password</a>
                     </div>

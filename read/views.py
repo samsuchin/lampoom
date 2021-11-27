@@ -39,10 +39,8 @@ def works(request):
 
 def work_detail(request, work_pk):
     work = get_object_or_404(Work, pk=work_pk)
-    art_works = work.art_works.all().order_by("order")
     context = {
         "work": work,
-        "art_works": art_works,
         "PRODUCT_API_URL": settings.PRODUCT_API_URL
     }
     return render(request, "read/work_detail.html", context)

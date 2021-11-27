@@ -159,6 +159,18 @@ hr{
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 }
+.masthead{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #596172;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+#masthead-title{
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
 /* 
 
 #67278e

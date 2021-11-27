@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         ('Information', {'fields': ('display_name', 'email', 'password', 'date_joined', 'bio', 'url_username')}),
         ('Permissions', {'fields': ('is_active', 'is_staff')}),
-        ('Misc', {'fields': ('first_name', 'last_name','graduation_year', 'board', 'profile_picture', 'profile_picture_preview')}),
+        ('Misc', {'fields': ('first_name', 'last_name', 'use_real_name', 'graduation_year', 'board', 'profile_picture', 'profile_picture_preview')}),
         
     )
     readonly_fields = ['date_joined', 'profile_picture_preview']

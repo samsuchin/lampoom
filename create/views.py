@@ -30,12 +30,11 @@ class work_detail(UpdateView, LoginRequiredMixin):
     model = Work
     template_name = "create/work_detail.html"
     context_object_name = "work"
-    fields = ["title", "art_works", "content", "created_at", "active", "featured", "original_work", "custom_display_name", "voice_file",]
+    fields = ["title", "art_work", "magazine", "content", "created_at", "active", "featured", "original_work", "custom_display_name", "voice_file",]
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["art_works"] = self.get_object().art_works.all().order_by("order")
         return context
 
     def get_success_url(self):
