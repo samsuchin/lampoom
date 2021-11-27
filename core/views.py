@@ -14,7 +14,7 @@ from random import getrandbits
 from django.contrib import messages
 
 def index(request):
-    works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:5]
+    works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:8]
     featured_works = Work.objects.filter(featured=True, active=True).order_by("?").distinct()[:2]
     magazine = Magazine.objects.filter(featured=True, active=True).order_by("created_at").first()
     users = get_user_model().objects.filter(is_active=True).order_by("?").distinct()[:3]

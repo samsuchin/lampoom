@@ -22,7 +22,7 @@ def works(request):
     Q(writer__first_name__icontains=filter_qs)|
     Q(writer__last_name__icontains=filter_qs)|
     Q(writer__display_name__icontains=filter_qs)|
-    Q(custom_display_name__icontains=filter_qs)).order_by("-created_at").distinct()
+    Q(custom_display_name__icontains=filter_qs)).order_by("?").distinct()
     paginator = Paginator(works, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
