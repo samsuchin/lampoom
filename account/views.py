@@ -10,7 +10,7 @@ from .forms import UserSettingsForm
 
 def account_detail(request, url_username):
     account = get_object_or_404(get_user_model(), url_username=url_username)
-    works = Work.objects.filter(active=True).filter(Q(writer=account) | Q(art_work__artist=account)).filter(original_work=True, art_work__original_work=True).distinct().order_by('-created_at')
+    works = Work.objects.filter(active=True).filter(Q(writer=account) | Q(art_work__artist=account)).filter(original_work=True).distinct().order_by('-created_at')
     context = {
         "account": account,
         "works": works
