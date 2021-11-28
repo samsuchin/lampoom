@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('email', 'is_staff', 'is_active',)
     fieldsets = (
         ('Information', {'fields': ('display_name', 'email', 'password', 'date_joined', 'bio', 'url_username')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'groups', 'user_permissions')}),
         ('Misc', {'fields': ('first_name', 'last_name', 'use_real_name', 'graduation_year', 'board', 'profile_picture', 'profile_picture_preview')}),
         
     )
@@ -26,10 +26,3 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(User, CustomUserAdmin)
 
-
-app_models = apps.get_app_config('account').get_models()
-for model in app_models:
-    try:
-        admin.site.register(model)
-    except AlreadyRegistered:
-        pass
