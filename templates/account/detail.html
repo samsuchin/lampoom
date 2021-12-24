@@ -11,6 +11,9 @@
         
         <img src="{% if account.profile_picture %}{{account.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
         <h2 class="profile-name pt-3 mb-0">{{account.get_name}}</h2>
+        {% if account.position %}
+        <div class="board mb-0">{{account.position}}</div>
+        {% endif %}
         <div class="board mb-0">{{account.get_board_display}} Board {{account.graduation_year}}</div>
         <div class="bio">{{account.bio|linebreaks}}</div>
         <div class="d-flex justify-content-center align-items-center">

@@ -10,6 +10,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     url_username = models.CharField(max_length=200, unique=True, help_text="harvardlampoon/@<YOUR_URL_USERNAME>/")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_hidden = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -23,6 +24,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to="profiles/", null=True, blank=True)
 
     board = models.CharField(choices=ACCOUNT.BOARD_CHOICES, max_length=20)
+    position = models.CharField(max_length=150, null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'display_name', 'url_username']
