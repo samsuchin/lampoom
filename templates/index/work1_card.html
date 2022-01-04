@@ -5,7 +5,7 @@
       <img src="{{work.get_preview_image.image.url}}" class="card-img-top" alt="...">
       
       <div class="card-body">
-        <h5 class="card-title text-center">{{work.title}} <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{work.laugh_score}} Laughs" class="badge bg-purple">{{work.laugh_score}}</span></h5>
+        <h5 class="card-title text-center mb-0 align-items-center d-flex justify-content-center">{{work.title}}{% include 'includes/laugh-badge.html' %}</h5>
         <div class="work fw-bold d-flex align-items-center justify-content-center">
           <span class="work fw-bold">By</span>{% include 'includes/writer_profile_pic.html' %}
         </div>

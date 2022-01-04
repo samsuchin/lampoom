@@ -154,6 +154,8 @@ AUTH_USER_MODEL = "account.User"
 
 PRODUCT_API_URL = env("PRODUCT_API_URL")
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 LOGGING = {

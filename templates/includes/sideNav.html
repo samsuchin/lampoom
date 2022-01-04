@@ -11,15 +11,14 @@
                 Read
             </a>
             <ul class="dropdown-menu shadow" aria-labelledby="readDrop">
-                <li><a class="dropdown-item" href="{% url 'works' %}">Works</a></li>
+                <li><a class="dropdown-item" href="{% url 'works' %}">Pieces</a></li>
                 <li><a class="dropdown-item" href="{% url 'magazines' %}">Magazines</a></li>
                 <li><a class="dropdown-item" href="{% url 'books' %}">Books</a></li>
             </ul>
             <a class="nav-link mb-2" href="{% url 'comp' %}">Comp</a>
             <a class="nav-link mb-2" href="{% url 'masthead' %}">Masthead</a>
             <a class="nav-link mb-2" href="{% url 'contact' %}">Contact</a>
-            <a class="nav-link mb-2" href="{% url 'lottery' %}">Lottery</a>
-            <a class="nav-link mb-2" href="{% url 'features' %}">Features</a>
+            <!-- <a class="nav-link mb-2" href="{% url 'lottery' %}">Lottery</a> -->
             {% if request.user.is_authenticated %}
             <a class="nav-link mb-2" href="{% url 'account_detail' request.user.url_username %}">My Profile</a>
             

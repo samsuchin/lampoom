@@ -37,4 +37,4 @@ class LoginForm(AuthenticationForm):
 class UserSettingsForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ["first_name", "last_name", "display_name", "graduation_year", "url_username", "bio", "profile_picture", "board" ]
+        fields = ["first_name", "last_name", "display_name", "graduation_year", "url_username", "bio", "profile_picture", "board", "year_joined", "positions" ]

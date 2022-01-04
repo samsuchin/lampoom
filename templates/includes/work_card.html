@@ -1,20 +1,18 @@
 {% load static %}
 <a class="card-link" href="{% url 'work_detail' work.pk %}">
-    <div class="card shadow" style="border: none">
+  <div class="card shadow" style="border: none">
 
-      <img src="{{work.get_preview_image.image.url}}" class="card-img-top" alt="...">
-      
-      <div class="card-body">
-        <h5 class="card-title text-center">{{work.title}} <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{work.laugh_score}} Laughs" class="badge bg-purple">{{work.laugh_score}}</span></h5>
-        <div class="work fw-bold d-flex align-items-center justify-content-center">
-          
-          {% include 'includes/writer_profile_pic.html' %}
+    <img src="{{work.get_preview_image.image.url}}" class="card-img-top" alt="...">
 
-    <span class="dot mx-2 align-self-center"></span>
-      <div>{{work.created_at|date:"F Y" }}</div>
-  </div>
-
-  <div class="card-text mt-3">{{work.content|truncatechars_html:75|safe}}</div>
+    <div class="card-body">
+      <h5 class="card-title text-center mb-0 align-items-center d-flex justify-content-center">{{work.title}}{% include 'includes/laugh-badge.html' %}</h5>
+      <div class="work fw-bold d-flex align-items-center justify-content-center">
+        {% include 'includes/writer_profile_pic.html' %}
+        <span class="dot mx-2 align-self-center"></span>
+        <div>{{work.created_at|date:"F Y" }}</div>
       </div>
+
+      <div class="card-text mt-3">{{work.content|truncatechars_html:75|safe}}</div>
     </div>
-  </a>
+  </div>
+</a>

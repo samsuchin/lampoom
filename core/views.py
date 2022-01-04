@@ -14,14 +14,15 @@ from random import getrandbits
 from django.contrib import messages
 
 def index(request):
-    works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:8]
-    featured_works = Work.objects.filter(featured=True, active=True).order_by("?").distinct()[:2]
+    works = Work.objects.filter(featured=False, active=True).order_by("?").distinct()[:7]
     magazine = Magazine.objects.filter(featured=True, active=True).order_by("created_at").first()
+    featured_works = Work.objects.filter(magazine=magazine, active=True).order_by("?").distinct()[:2]
     users = get_user_model().objects.filter(is_hidden=False).order_by("?").distinct()[:3]
     context = {
         "featured_works": featured_works,
         "works": works,
         "magazine": magazine,
+        "magazines": Magazine.objects.filter(active=True).order_by("-created_at"),
         "users": users
     }
     return render(request, "index.html", context)

@@ -24,7 +24,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to="profiles/", null=True, blank=True)
 
     board = models.CharField(choices=ACCOUNT.BOARD_CHOICES, max_length=20)
-    position = models.CharField(max_length=150, null=True, blank=True)
+    year_joined = models.CharField(max_length=4, null=True, blank=True)
+    positions = models.CharField(max_length=150, null=True, blank=True, help_text="Comma seperated positions")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'display_name', 'url_username']

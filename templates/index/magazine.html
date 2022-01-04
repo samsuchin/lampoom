@@ -6,10 +6,31 @@
     <div class="card-body">
     <div class="mb-1 mt-2">
         <h2 class="card-title text-center mb-0">{{magazine.title}}</h2>
-        <h5 class="mb-1"><div data-bs-toggle="tooltip" data-bs-placement="top" title="{{magazine.get_total_laughs}} Total Laughs" class="badge bg-purple ms-2">{{magazine.get_total_laughs}}</div></h5>
+        <!-- <h5 class="mb-1"><div data-bs-toggle="tooltip" data-bs-placement="top" title="{{magazine.get_total_laughs}} Total Laughs" class="badge badge-laugh ms-2">{{magazine.get_total_laughs}}</div></h5> -->
     </div>
-    
+    <hr>
+    <div class="text-start">
+        {% if magazine.issue_editor %}
+        {% if magazine.custom_issue_editor %}
+        <div><span class="fw-bold">Issue Editor: </span>{{magazine.custom_issue_editor}}</div>
+        {% else %}
+        <div class=""><span class="fw-bold">Issue Editor: </span><a class="work-link" href="{% url 'account_detail' magazine.issue_editor.url_username %}">{{magazine.issue_editor.display_name}}</a></div>
+        {% endif %}
+    {% endif %}
+    {% if magazine.art_editor %}
+        {% if magazine.custom_art_editor %}
+        <div><span class="fw-bold">Issue Editor: </span>{{magazine.custom_art_editor}}</div>
+        {% else %}
+        <div class=""><span class="fw-bold">Art Editor: </span><a class="work-link" href="{% url 'account_detail' magazine.art_editor.url_username %}">{{magazine.art_editor.display_name}}</a></div>
+        {% endif %}
+    {% endif %}
+    <div><span class="fw-bold">Publication: </span>{{magazine.created_at|date:"F Y"}}</div>
+    </div>
+    <hr>
     <div class="card-text">{{magazine.description|truncatechars_html:200|safe}}</div>
+    <!-- <div class="text-end">
+        <a class="work-link" href="{% url 'magazine_detail' magazine.pk %}">Read More >></a>
+    </div> -->
 </div>
     </div>
 </a>

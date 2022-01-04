@@ -103,3 +103,12 @@ transition: all 300ms ease;
         margin-top: 0;
      }
     
+#scroll-navbar{
+    transition: all 300ms ease;
+}
+#scroll-navbar{
+    z-index: 1000;
+}
+#top-navbar{
+    z-index: 1001;
+}

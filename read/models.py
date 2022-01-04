@@ -16,6 +16,7 @@ class Work(models.Model):
     featured = models.BooleanField(default=False)
     laugh_score = models.PositiveBigIntegerField(default=0)
     original_work = models.BooleanField(default=True)
+    views = models.PositiveBigIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.title
@@ -27,6 +28,7 @@ class Work(models.Model):
     
     def get_preview_image(self):
         return self.art_work
+
 
 class ArtWork(models.Model):
     artist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
@@ -70,6 +72,9 @@ class Magazine(models.Model):
         for work in self.works.all():
             total+=work.laugh_score
         return total
+    
+    def get_random_pieces(self):
+        return self.works.filter(active=True).order_by("?")[:7]
         
 
 class Book(models.Model):

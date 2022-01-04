@@ -22,10 +22,6 @@
     }
   }
   .hoverme {
-    width: 240px;
-    margin:150px auto 0;
-    text-align: center;
-    padding: 10px 0;
     cursor: pointer;
     position: relative;
   }

@@ -80,3 +80,7 @@ h1{
     border: none;
     transition: all 300ms ease;
 }
+
+#sticky-work{
+    z-index: 900;
+}

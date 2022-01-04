@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito&family=Sorts+Mill+Goudy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito&display=swap');
 
 html{
     height: 100%;
 }
 body{
-    font-family: 'Josefin Sans', sans-serif;
-    /* font-family: 'Sorts Mill Goudy', serif; */
+    font-family: 'Nunito', sans-serif;
 }
+#readDrop:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
 
 .page-item>.page-link {
     background-color: transparent;
@@ -115,6 +118,16 @@ hr{
     color: #733898;
 }
 
+.link{
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 300ms ease;
+    font-weight: bold;
+}
+.link:hover{
+    color: #b374da;
+}
+
 .form-control{
     border-radius: 20px;
 
@@ -171,6 +184,49 @@ hr{
     font-weight: bolder;
     text-transform: uppercase;
 }
+hr{
+    border: none;
+    margin-top: 5px;
+    height: 2px !important;
+    /* Set the hr color */
+    color: #eee; /* old IE */
+    background-color: #eee; /* Modern Browsers */
+}
+h1, h2, h3, h4, h5{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+}
+
+.card-title{
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-weight: 700 !important;
+}
+
+
+.badge.badge-laugh{
+    font-size: 18px;
+    padding: 5px 10px !important;
+    background-color: #b374da !important;
+    color: white;
+    border-radius: 5 !important;
+}
+.badge.badge-laugh:hover{
+    background-color: #733898 !important;
+    cursor: pointer;
+}
+#laugh-score{
+    color: white;
+}
+
+#plus-one-counter{
+    position: absolute;
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+    background-color: #b374da !important;
+    font-weight: 10px;
+}
+
 /* 
 
 #67278e

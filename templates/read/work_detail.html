@@ -11,43 +11,76 @@
         {% include 'includes/ad.html' with ad_type='banner' %}
     </div>
     <div class="row">
-
         <div class="col-12 col-md-8 mx-auto">
-           
-                        <img src="{{work.art_work.image.url}}" class="d-block w-100" alt="...">
-        
-                        <div class="text-center work fw-bold d-block mt-2 mb-4">
-                            Art by {% include 'includes/artist_profile_pic.html' with art=work.art_work %}
-                        </div>
-                
-            <div class="text-center">
-                <h3 id="title-element" class="">{{work.title}}{% if work.voice_file %}
+
+            <img src="{{work.art_work.image.url}}" class="d-block w-100" alt="...">
+            <div class="text-end my-2">
+                <div class="text-muted"><strong>Artwork:</strong> <a class="work-link"
+                    href="{% url 'account_detail' work.art_work.artist.url_username %}">{{work.art_work.get_display_name}}</a></div>
+
+                <div id="laugh" class="badge badge-laugh hoverme"><img height="25" class="me-1" src="{% static 'images/jester-hat.svg' %}" alt=""><span id="laugh-score">{{work.laugh_score}}</span></div>
+                <input type="hidden" name="work_pk" value="{{work.pk}}" id="work-pk">
+                <input type="hidden" name="endpoint" value="{% url 'add_laugh_score' %}" id="laugh-endpoint">
+            </div>
+            <div class="text-start">
+                <h1 class="title-element mb-0">{{work.title}}</h1>
+                <div><strong>Author: </strong><a class="work-link"
+                        href="{% url 'account_detail' work.writer.url_username %}">{{work.get_display_name}}</a></div>
+                <div><strong>As seen in: </strong><a class="work-link"
+                        href="{% url 'magazine_detail' work.magazine.pk %}">{{work.magazine.title}}</a></div>
+                <!-- <h3 id="title-element" class="">{{work.title}}{% if work.voice_file %}
                     <button class="play-sound" onclick="playAudio('{{work.voice_file.url}}')"><i class="fa fa-volume-up"></i></button>
-                    {% endif %}</h3>
-                    <h5 class="text-center"><span id="laugh-score" class="badge bg-purple">{{work.laugh_score}} Laughs</span></h5>
-                <div class="work fw-bold d-flex align-items-center justify-content-center">
+                    {% endif %}</h3> -->
+                <!-- <h5 class="text-center"><span id="laugh-score" class="badge badge-laugh">{{work.laugh_score}} Laughs</span></h5> -->
+                <!-- <div class="work fw-bold d-flex align-items-center justify-content-center">
                     By {% include 'includes/writer_profile_pic.html' %}
                             <span class="dot mx-2 align-self-center"></span>
                     <div>{{work.created_at|date:"F Y" }}</div>
-                </div>
+                </div> -->
             </div>
+            <hr>
         </div>
-        </div>
-        <div class="row">
+    </div>
+
+    <div class="row">
         <div class="col-12 col-md-6 ms-auto">
             <div class="mt-4">{{work.content | safe}}</div>
+
         </div>
         <div class="col-12 col-md-3">
-            <div class="sticky-top pt-5">
-            {% include 'includes/ad.html' with ad_type='block' %}
-            
-        </div>
+       
+            <div id="sticky-work" class="sticky-top pt-5">
+                <div class="pt-5 text-center">
+                {% include 'includes/ad.html' with ad_type='block' %}
+                <!-- <div class="badge badge-laugh mt-3">Laugh</div> -->
+            </div>
+            </div>
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+            <hr>
+        </div>
+        <div class="col-12 col-md-8 d-flex mx-auto align-items-center">
+            <div class="col-4 me-5 d-none d-lg-block">
+                <a href="{% url 'magazine_detail' work.magazine.pk %}">
+                <img class="img-fluid" src="{{work.magazine.cover_image.image.url}}" alt="">
+            </a>
+            </div>
+            <div class="col-12 col-lg-8">
+                <h2>More from this issue</h2>
+                    {% for work in work.magazine.get_random_pieces %}
+                    <a class="link" href="{% url 'work_detail' work.pk %}">{{work.title}}</a>
+                    <hr>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+    
 
 </div>
-<input type="hidden" name="endpoint" value="{% url 'add_laugh_score' %}" id="laugh-endpoint">
+<!-- <input type="hidden" name="endpoint" value="{% url 'add_laugh_score' %}" id="laugh-endpoint">
 <input type="hidden" name="work_pk" value="{{work.pk}}" id="work-pk">
 <button id="video-start" onclick="startLaughAnalysis()" class="laugh-track shadow"><i id="video-icon" class="fa fa-video" style="color: white;"></i></button>
 <button id="video-stop" style="display: none;" onclick="stopVideo()" class="laugh-track shadow"><i id="video-icon" class="fa fa-times" style="color: white;"></i></button>
@@ -56,29 +89,16 @@
         <canvas width="320" height="240" id="overlay"></canvas>
         <video width="320" height="240" id="video"></video>
     </div>
-</div>
+</div> -->
 {% endblock %}
 {% block js %}
+<script src="{% static 'js/laugh.js' %}"></script>
 <script>
-
     function playAudio(audio_file) {
         var audio = new Audio(audio_file)
         audio.play()
     }
-    // {% if work.voice_file %}
-    // var played = false;
-    // var title_el = document.getElementById("title-element")
-    // window.addEventListener("scroll", (e)=>{
-    //     if(title_el.getBoundingClientRect().top < 0 && !played){
-    //         document.getElementById('beep').muted = false;
-    //         document.getElementById('beep').play();
-    //         played = true;
-    //     }
-    // })
-    // {% endif %}
-    
-
 </script>
-<script src="{% static 'js/face-api.js' %}"></script>
-<script src="{% static 'js/detect.js' %}"></script>
+<!-- <script src="{% static 'js/face-api.js' %}"></script>
+<script src="{% static 'js/detect.js' %}"></script> -->
 {% endblock %}

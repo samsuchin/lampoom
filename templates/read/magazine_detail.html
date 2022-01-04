@@ -46,7 +46,7 @@
 <div class="row g-4 py-2">
     {% if magazine.works.all.count != 0 %}
     <hr>
-    <h1 class="text-center mb-3">Works</h1>
+    <h1 class="text-center mb-3">Pieces</h1>
     {% for work in magazine.works.all %}
     <div class="col-6 col-lg-4">
         {% include 'includes/work_card.html' %}

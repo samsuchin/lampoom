@@ -11,11 +11,16 @@
         
         <img src="{% if account.profile_picture %}{{account.profile_picture.url}}{% else %}{% static 'images/lampy_profile.png' %}{% endif %}" class="profile-picture">
         <h2 class="profile-name pt-3 mb-0">{{account.get_name}}</h2>
-        {% if account.position %}
-        <div class="board mb-0">{{account.position}}</div>
-        {% endif %}
         <div class="board mb-0">{{account.get_board_display}} Board {{account.graduation_year}}</div>
+        {% if account.positions %}
+        <div class="board mb-0">{{account.positions}}</div>
+        {% endif %}
+        {% if account.year_joined %}
+        <div class="text-small fst-italic">Joined {{account.year_joined}}</div>
+        {% endif %}
+        {% if account.bio %}
         <div class="bio">{{account.bio|linebreaks}}</div>
+        {% endif %}
         <div class="d-flex justify-content-center align-items-center">
             {% if request.user == account %}
             <div class="dropdown">
@@ -36,7 +41,7 @@
             </a>
             {% endif %}
         </div>
-        <hr style="background-color: black">
+        <hr>
     </div>
     <div class="row g-4 grid">
         {% for work in works %}

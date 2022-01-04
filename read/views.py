@@ -23,7 +23,7 @@ def works(request):
     Q(writer__last_name__icontains=filter_qs)|
     Q(writer__display_name__icontains=filter_qs)|
     Q(custom_display_name__icontains=filter_qs)).order_by("?").distinct()
-    paginator = Paginator(works, 10)
+    paginator = Paginator(works, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
@@ -39,6 +39,11 @@ def works(request):
 
 def work_detail(request, work_pk):
     work = get_object_or_404(Work, pk=work_pk)
+    # if not request.session.get("views"):
+    #     request.session["views"] = str(work.pk)
+    # if str(work.pk) not in request.session.get("views").split(","):
+    #     request.session["views"] = f"{request.session.get('views')},{work.pk}"
+    # print(request.session.get("views"))
     context = {
         "work": work,
         "PRODUCT_API_URL": settings.PRODUCT_API_URL
@@ -62,7 +67,7 @@ def magazines(request):
     Q(works__writer__first_name__icontains=filter_qs)|
     Q(works__writer__last_name__icontains=filter_qs)|
     Q(works__custom_display_name__icontains=filter_qs)).order_by("-created_at").distinct()
-    paginator = Paginator(magazines, 10)
+    paginator = Paginator(magazines, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {

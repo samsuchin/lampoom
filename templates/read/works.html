@@ -9,11 +9,11 @@
 {% block content %}
 <div class="container pb-5">
   {% include 'includes/ad.html' with ad_type='banner' %}
-  <h1 class="text-center pt-3">Works</h1>
+  <h1 class="text-center pt-3">Pieces</h1>
   <div class="row">
     <form method="GET" action="">
     <div class="mb-3 col-12 col-md-6 mx-auto">
-      <input placeholder="Filter Works..." type="text" name="filter" value="{{filter}}" class="form-control">
+      <input placeholder="Filter Pieces..." type="text" name="filter" value="{{filter}}" class="form-control">
     </div>
   </form>
   </div>
@@ -44,6 +44,6 @@
 setTimeout(function () {
   var msnry = new Masonry('.grid');
   msnry.layout();
-}, 300);
+}, 500);
 </script>
 {% endblock %}

@@ -4,39 +4,67 @@
 <link rel="stylesheet" href="{% static 'css/read.css' %}">
 <link rel="stylesheet" href="{% static 'css/account.css' %}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 {% endblock %}
 {% block content %}
 
-    <div class="container-fluid px-4">
-        {% include 'includes/ad.html' with ad_type='banner' %}
-        <div class="row pt-4">
-            <div class="col order-1 order-lg-0">
-                {% for work in featured_works %}
-                {% include 'index/work1_card.html' %}
-                {% endfor %}
+<div class="container-fluid px-4">
+    {% include 'includes/ad.html' with ad_type='banner' %}
+    <div class="row pt-4">
+        <div class="magazine-col">
+            <div class="d-flex align-items-center">
+                <h2 class="me-auto"><strong>What's New: </strong>{{magazine.title}}</h2>
+                <a class="link" href="{% url 'magazine_detail' magazine.pk %}">Read More >></a>
             </div>
-            <div class="col-lg-5 text-center order-0 order-lg-1">
-                {% include 'index/magazine.html' %}
-            </div>
-            <div class="col order-2 order-lg-2">
-                {% for work in works %}
-                <div class="mb-3">
-                {% include 'index/work2_card.html' %}
-                {% if forloop.counter == 2 %}
-                <div class="pt-3">
-                {% include 'includes/ad.html' with ad_type='banner' %}
-                </div>
-                {% endif %}
-                </div>
-                {% endfor %}
-            </div>
-  
+            <hr>
         </div>
-        <div class="mb-4">
-            {% include 'includes/ad.html' with ad_type='banner' %}
+        <div class="col d-none d-lg-block">
+            <div class="d-flex align-items-center">
+                <h2 class="me-auto"><strong>Trending</strong></h2>
+                <!-- <a class="link" href="{% url 'magazine_detail' magazine.pk %}"></a>
+                <div class="dropdown">
+                    <a class="dropdown-toggle link" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Today
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div> -->
+            </div>
+            <hr>
         </div>
     </div>
-    <div class="subscribe-bg text-center py-3">
+    <div class="row">
+        <div class="col order-1 order-lg-0">
+            {% for work in featured_works %}
+            {% include 'index/work1_card.html' %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-5 text-center order-0 order-lg-1">
+            {% include 'index/magazine.html' %}
+        </div>
+        <div class="col order-2 order-lg-2">
+            {% for work in works %}
+            <div class="mb-3">
+                {% include 'index/work2_card.html' %}
+                <!-- {% if forloop.counter == 2 %}
+                <div class="pt-3">
+                    {% include 'includes/ad.html' with ad_type='banner' %}
+                </div>
+                {% endif %} -->
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="mb-4">
+        {% include 'includes/ad.html' with ad_type='banner' %}
+    </div>
+</div>
+<!-- <div class="subscribe-bg text-center py-3">
             <div class="col-4 mx-auto">
                 <h3>Subscribe to the Harvard Lampoon</h3>
                 <div>Get the latest pieces delivered right to your door.</div>
@@ -46,17 +74,52 @@
                 </form>
              
             </div>
+    </div> -->
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="">Magazines</h2>
+        <a class="link" href="{% url 'magazines' %}">Explore collection >></a>
     </div>
-    <div class="container">
-        <div class="row g-3 my-3">
-            {% if users %}
-            {% for user in users %}
-            <div class="col-12 col-md-4">
-                {% include 'includes/user_card.html' with obj=user %}
-            </div>
-            {% endfor %}
-            {% endif %}
-        </div>
+    <hr>
+</div>
+<div class="main-carousel mb-3" id="magazine-scroll">
+    {% for magazine in magazines %}
+    <div class="carousel-cell">
+        <a href="{% url 'magazine_detail' magazine.pk %}">
+            <img class="img-fluid" src="{{magazine.cover_image.image.url}}" alt="">
+        </a>
     </div>
+    {% endfor %}
+</div>
 
+<div class="index-border text-center d-flex align-items-center justify-content-center">
+    <img class="me-2" height="50" src="{% static 'images/lampy_profile.png' %}" alt="">
+    <div>
+        Like what you're seeing? <a class="link-info" target="_blank"
+            href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Subscribe >></a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-3 my-3">
+        {% if users %}
+        {% for user in users %}
+        <div class="col-12 col-md-4">
+            {% include 'includes/user_card.html' with obj=user %}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+    var flkty = new Flickity('#magazine-scroll', {
+        pageDots: false,
+        freeScroll: true,
+        wrapAround: true
+    });
+</script>
 {% endblock %}

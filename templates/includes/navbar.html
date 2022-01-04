@@ -2,6 +2,7 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
+<div id="top-navbar">
 <div class="top-banner"><i class="fa fa-bell mx-2"></i>   Subscribe to the <a class="" href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Harvard Lampoon</a></div>
 <div class="container my-5">
     <div class="row">
@@ -33,19 +34,36 @@
         Read
     </a>
     <ul class="dropdown-menu shadow" aria-labelledby="readDrop">
-        <li><a class="dropdown-item" href="{% url 'works' %}">Works</a></li>
+        <li><a class="dropdown-item" href="{% url 'works' %}">Pieces</a></li>
         <li><a class="dropdown-item" href="{% url 'magazines' %}">Magazines</a></li>
         <li><a class="dropdown-item" href="{% url 'books' %}">Books</a></li>
     </ul>
     <a class="nav-link" href="{% url 'comp' %}">Comp</a>
     <a class="nav-link" href="{% url 'masthead' %}">Masthead</a>
     <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-    <a class="nav-link" href="{% url 'lottery' %}">Lottery</a>
-    <a class="nav-link" href="{% url 'features' %}">Features</a>
+    <!-- <a class="nav-link" href="{% url 'lottery' %}">Lottery</a> -->
     {% if request.user.is_authenticated %}
     <a class="nav-link" href="{% url 'account_detail' request.user.url_username %}">My Profile</a>
     {% endif %}
 </div>
-
+</div>
   {% include 'includes/search_modal.html' %}
   {% include 'includes/sideNav.html' %}
+  {% include 'includes/scroll-navbar.html' %}
+
+<script>
+    var scroll_nav = document.getElementById("scroll-navbar")
+    var top_nav = document.getElementById("top-navbar")
+    window.addEventListener("scroll", (e)=>{
+        if (window.pageYOffset >= 262){
+            scroll_nav.style.display = "block"
+            scroll_nav.style.opacity = "1"
+            console.log("switch to")
+        }
+        else{
+            scroll_nav.style.display = "none"
+            scroll_nav.style.opacity = "0"
+            scroll_nav.classList.add("d-lg-block")
+        }
+    })
+</script>
