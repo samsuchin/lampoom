@@ -10,4 +10,5 @@ urlpatterns = [
     path("comp/", comp, name="comp"),
     path("contact/", contact, name="contact"),
     path("features/", features, name="features"),
+    path("starr/", starr, name="starr")
 ]

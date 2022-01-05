@@ -109,3 +109,6 @@ def contact(request):
 
 def features(request):
     return render(request, "features.html")
+
+def starr(request):
+    return render(request, "starr.html")

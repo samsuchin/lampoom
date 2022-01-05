@@ -108,12 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_HOST = "mail.privateemail.com"
-    EMAIL_HOST_USER = "info@harvardlampoom.com"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "noreply@harvardlampoon.com"
     EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = "Harvard Lampoom <info@harvardlampoom.com>"
+    DEFAULT_FROM_EMAIL = "Harvard Lampoom <noreply@harvardlampoon.com>"
 
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
