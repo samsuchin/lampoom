@@ -47,6 +47,10 @@
             {% include 'index/magazine.html' %}
         </div>
         <div class="col order-2 order-lg-2">
+            <div class="d-lg-none d-block">
+                <h2 class="me-auto"><strong>Trending</strong></h2>
+                <hr>
+            </div>
             {% for work in works %}
             <div class="mb-3">
                 {% include 'index/work2_card.html' %}
@@ -92,14 +96,14 @@
     {% endfor %}
 </div>
 
-<div class="index-border text-center d-flex align-items-center justify-content-center">
+<div class="index-border text-center d-flex align-items-center justify-content-center mb-5">
     <img class="me-2" height="50" src="{% static 'images/lampy_profile.png' %}" alt="">
     <div>
         Like what you're seeing? <a class="link-info" target="_blank"
             href="https://checkout.subscriptiongenius.com/harvardlampoon.com/">Subscribe >></a>
     </div>
 </div>
-
+<!-- 
 <div class="container">
     <div class="row g-3 my-3">
         {% if users %}
@@ -110,7 +114,7 @@
         {% endfor %}
         {% endif %}
     </div>
-</div>
+</div> -->
 
 {% endblock %}
 {% block js %}

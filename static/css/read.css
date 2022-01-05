@@ -61,7 +61,7 @@ h1{
     font-weight: bold;
 }
 .card-text{
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     /* font-family: 'Sorts Mill Goudy', serif; */
     color: #596172;
 }
@@ -84,3 +84,35 @@ h1{
 #sticky-work{
     z-index: 900;
 }
+
+.img-container {
+    position: relative;
+  }
+  
+  .magazine-img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: all 300ms ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+  }
+  
+  .img-container:hover .magazine-img {
+    opacity: 0.5;
+  }
+  
+  .img-container:hover .middle {
+    opacity: 1;
+  }

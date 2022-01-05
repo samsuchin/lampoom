@@ -105,8 +105,6 @@ transition: all 300ms ease;
     
 #scroll-navbar{
     transition: all 300ms ease;
-}
-#scroll-navbar{
     z-index: 1000;
 }
 #top-navbar{
