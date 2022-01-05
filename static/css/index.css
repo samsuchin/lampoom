@@ -20,9 +20,16 @@
 }
 
 .carousel-cell {
-    width: 15%;
+    width: 33%;
     margin-right: 15px;
   }
+  @media (min-width: 992px) {
+    .carousel-cell{
+        width: 15%;
+        margin-right: 15px;
+    }
+    
+}
 
 .magazine-col{
     width: 100%;
